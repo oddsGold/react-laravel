@@ -1,0 +1,47 @@
+@import './assets/sass/plugins/reset.scss';
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.wrapper, body {
+    height: auto;
+    min-height: 100%;
+}
+.wrapper {
+    position: relative;
+}
+a {
+    color: #ffffff;
+}
+a:hover,
+a:focus {
+    background-color: transparent;
+    text-transform: none;
+    text-decoration: none;
+    color: #ffffff;
+}
+.content-wrapper {
+    min-height: 100%;
+    background-color: #ecf0f5;
+    z-index: 800;
+}
+.content-wrapper,
+.main-footer {
+    -webkit-transition: -webkit-transform .3s ease-in-out,margin .3s ease-in-out;
+    -webkit-transition: margin .3s ease-in-out,-webkit-transform .3s ease-in-out;
+    transition: margin .3s ease-in-out,-webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out,margin .3s ease-in-out;
+    transition: transform .3s ease-in-out,margin .3s ease-in-out,-webkit-transform .3s ease-in-out;
+    margin-left: 230px;
+    z-index: 820;
+}
+
+@import './views/sections/header/header.scss';
+@import './views/pages/Login/LoginPage.scss';
+
+
