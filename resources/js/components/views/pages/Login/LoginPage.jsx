@@ -5,10 +5,9 @@ import LoginPageReduxForm from "./LoginPageForm";
 function LoginPage(props) {
 
     return (
-        <Wrapper>
-            <h1>Login Form</h1>
+        <div className="login-page">
             <LoginPageReduxForm onSubmit={props.onSubmit}/>
-        </Wrapper>
+        </div>
     )
 }
 

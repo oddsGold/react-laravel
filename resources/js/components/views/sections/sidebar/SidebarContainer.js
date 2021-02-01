@@ -5,6 +5,11 @@ import './Sidebar.scss';
 import {menusItem} from "../../../reducers/navbar-reducer";
 
 function SidebarContainer (props) {
+
+    useEffect(() => {
+        props.menusItem()
+    },[])
+
     return (
         <Sidebar menuItems={props.menuItems} />
     )

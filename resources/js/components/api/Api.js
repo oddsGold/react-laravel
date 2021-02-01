@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 export const menusApi = {
-    getMenu(){
+    getMenu() {
         return instance.get('getMenus')
             .then(response => {
                 return response.data
@@ -14,12 +14,31 @@ export const menusApi = {
 }
 
 export const authApi = {
-    authLogin(formData) {
-        return instance.post('/api/auth/login', {
-            body: JSON.stringify(formData),
-            headers: {"Content-Type" : "application/json"}
+    authLogin(email, password) {
+        return instance.post('auth/login', {email, password})
+            .then(response => {
+                return response
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
+    },
+
+    authRegister(registerData) {
+        return instance.post('auth/register', registerData)
+            .then(response => {
+                return response
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
+    },
+    getUser(token) {
+        return instance.post('auth/me', null, {
+            headers: { Authorization: `Bearer ${token}` }
         })
-            .then(response => response.json())
-            .then(response => console.log(response))
+            .then(response => {
+                return response
+            })
     }
 }

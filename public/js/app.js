@@ -2099,14 +2099,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _libs_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./libs.scss */ "./resources/js/components/libs.scss");
-/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.scss */ "./resources/js/components/App.scss");
-/* harmony import */ var _views_pages_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/pages/index */ "./resources/js/components/views/pages/index.jsx");
-/* harmony import */ var _views_sections_preloader_preloader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/sections/preloader/preloader */ "./resources/js/components/views/sections/preloader/preloader.jsx");
-/* harmony import */ var _reducers_app_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./reducers/app-reducer */ "./resources/js/components/reducers/app-reducer.js");
-/* harmony import */ var _views_pages_Login_LoginContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/pages/Login/LoginContainer */ "./resources/js/components/views/pages/Login/LoginContainer.js");
+/* harmony import */ var _libs_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./libs.scss */ "./resources/js/components/libs.scss");
+/* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.scss */ "./resources/js/components/App.scss");
+/* harmony import */ var _views_pages_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/pages/index */ "./resources/js/components/views/pages/index.jsx");
+/* harmony import */ var _views_pages_Login_LoginContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/pages/Login/LoginContainer */ "./resources/js/components/views/pages/Login/LoginContainer.js");
+/* harmony import */ var _views_pages_Register_RegisterContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/pages/Register/RegisterContainer */ "./resources/js/components/views/pages/Register/RegisterContainer.js");
+/* harmony import */ var _Helpers_Hoc_GuestRoute__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Helpers/Hoc/GuestRoute */ "./resources/js/components/Helpers/Hoc/GuestRoute.js");
+/* harmony import */ var _Helpers_Hoc_AuthRoute__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Helpers/Hoc/AuthRoute */ "./resources/js/components/Helpers/Hoc/AuthRoute.js");
 
 
 
@@ -2120,35 +2119,22 @@ __webpack_require__.r(__webpack_exports__);
  // const UsersContainer = React.lazy(() => import('./components/content/Users/UsersContainer'));
 
 function App(props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    props.initializedSuccessApp();
-  });
-
-  if (!props.initialized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_views_sections_preloader_preloader__WEBPACK_IMPORTED_MODULE_6__.default, {});
-  }
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Helpers_Hoc_GuestRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
+      path: "/admin/login",
+      component: _views_pages_Login_LoginContainer__WEBPACK_IMPORTED_MODULE_5__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Helpers_Hoc_GuestRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
+      path: "/admin/register",
+      component: _views_pages_Register_RegisterContainer__WEBPACK_IMPORTED_MODULE_6__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Helpers_Hoc_AuthRoute__WEBPACK_IMPORTED_MODULE_8__.default, {
       exact: true,
       path: "/admin",
-      component: _views_pages_index__WEBPACK_IMPORTED_MODULE_5__.default
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-      path: "/admin/login",
-      component: _views_pages_Login_LoginContainer__WEBPACK_IMPORTED_MODULE_8__.default
+      component: _views_pages_index__WEBPACK_IMPORTED_MODULE_4__.default
     })]
   });
 }
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    initialized: state.app.initialized
-  };
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, {
-  initializedSuccessApp: _reducers_app_reducer__WEBPACK_IMPORTED_MODULE_7__.initializedSuccessApp
-})(App));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),
 
@@ -2216,6 +2202,165 @@ function Input(_ref2) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Helpers/Hoc/AuthRoute.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/Helpers/Hoc/AuthRoute.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var AuthRoute = function AuthRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ["component"]);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, _objectSpread(_objectSpread({}, rest), {}, {
+    render: function render(props) {
+      return rest.loggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+        to: {
+          pathname: "/admin/login"
+        }
+      });
+    }
+  }));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: state.auth.loggedIn
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps)(AuthRoute));
+
+/***/ }),
+
+/***/ "./resources/js/components/Helpers/Hoc/GuestRoute.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Helpers/Hoc/GuestRoute.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var GuestRoute = function GuestRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ["component"]);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, _objectSpread(_objectSpread({}, rest), {}, {
+    render: function render(props) {
+      return !rest.loggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+        to: {
+          pathname: "/admin"
+        }
+      });
+    }
+  }));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: state.auth.loggedIn
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps)(GuestRoute));
+
+/***/ }),
+
+/***/ "./resources/js/components/Helpers/Hoc/WithAuthRedirect.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Helpers/Hoc/WithAuthRedirect.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "withAuthRedirect": () => /* binding */ withAuthRedirect
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var mapStateToPropsForRedicrect = function mapStateToPropsForRedicrect(state) {
+  return {
+    isAuth: state.auth.isAuth
+  };
+};
+
+var withAuthRedirect = function withAuthRedirect(Component) {
+  function RedirectComponent(props) {
+    if (!props.isAuth) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+      to: "/admin/login"
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, _objectSpread({}, props));
+  }
+
+  var ConnectedAuthRedirectComponent = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToPropsForRedicrect)(RedirectComponent);
+  return ConnectedAuthRedirectComponent;
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/Helpers/Validation/validation.js":
 /*!******************************************************************!*\
   !*** ./resources/js/components/Helpers/Validation/validation.js ***!
@@ -2271,16 +2416,34 @@ var menusApi = {
   }
 };
 var authApi = {
-  authLogin: function authLogin(formData) {
-    return instance.post('/api/auth/login', {
-      body: JSON.stringify(formData),
+  authLogin: function authLogin(email, password) {
+    return instance.post('auth/login', {
+      email: email,
+      password: password
+    }).then(function (response) {
+      return response;
+    })["catch"](function (response) {
+      return {
+        errors: response.response.data
+      };
+    });
+  },
+  authRegister: function authRegister(registerData) {
+    return instance.post('auth/register', registerData).then(function (response) {
+      return response;
+    })["catch"](function (response) {
+      return {
+        errors: response.response.data
+      };
+    });
+  },
+  getUser: function getUser(token) {
+    return instance.post('auth/me', null, {
       headers: {
-        "Content-Type": "application/json"
+        Authorization: "Bearer ".concat(token)
       }
     }).then(function (response) {
-      return response.json();
-    }).then(function (response) {
-      return console.log(response);
+      return response;
     });
   }
 };
@@ -2302,6 +2465,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_redux_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/redux-store */ "./resources/js/components/reducers/redux-store.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./App */ "./resources/js/components/App.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _api_Api__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./api/Api */ "./resources/js/components/api/Api.js");
+/* harmony import */ var _reducers_auth_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reducers/auth-reducer */ "./resources/js/components/reducers/auth-reducer.js");
 
 
 
@@ -2309,19 +2476,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_3__.render(
-/*#__PURE__*/
-// <React.StrictMode>
-//     <Provider store={store}>
-//         <App />
-//     </Provider>
-// </React.StrictMode>,
-(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_5__.Provider, {
-  store: _reducers_redux_store__WEBPACK_IMPORTED_MODULE_4__.default,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_App__WEBPACK_IMPORTED_MODULE_6__.default, {})
-}), document.getElementById('root')); // If you want your app to work offline and load faster, you can change
+
+
+
+var token = js_cookie__WEBPACK_IMPORTED_MODULE_7___default().get("token");
+
+function render() {
+  react_dom__WEBPACK_IMPORTED_MODULE_3__.render(
+  /*#__PURE__*/
+  // <React.StrictMode>
+  //     <Provider store={store}>
+  //         <App />
+  //     </Provider>
+  // </React.StrictMode>,
+  (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_5__.Provider, {
+    store: _reducers_redux_store__WEBPACK_IMPORTED_MODULE_4__.default,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_App__WEBPACK_IMPORTED_MODULE_6__.default, {})
+  }), document.getElementById('root'));
+}
+
+if (token) {
+  _api_Api__WEBPACK_IMPORTED_MODULE_8__.authApi.getUser(token).then(function (response) {
+    _reducers_redux_store__WEBPACK_IMPORTED_MODULE_4__.default.dispatch((0,_reducers_auth_reducer__WEBPACK_IMPORTED_MODULE_9__.setUserDataAC)(response.data.user));
+    render();
+  });
+} else {
+  render();
+} // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
 
 _serviceWorker__WEBPACK_IMPORTED_MODULE_2__.unregister();
 
@@ -2340,14 +2524,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initializedSuccessApp": () => /* binding */ initializedSuccessApp,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _navbar_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar-reducer */ "./resources/js/components/reducers/navbar-reducer.js");
+/* harmony import */ var _auth_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth-reducer */ "./resources/js/components/reducers/auth-reducer.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import {getCurrentUserTC} from "./auth-reducer";
 
 var INITIALIZED = 'INITIALIZED';
 var initialState = {
@@ -2376,8 +2559,7 @@ var initializedSuccess = function initializedSuccess() {
 };
 var initializedSuccessApp = function initializedSuccessApp() {
   return function (dispatch) {
-    dispatch(initializedSuccess());
-    dispatch((0,_navbar_reducer__WEBPACK_IMPORTED_MODULE_0__.menusItem)()); // let promise = dispatch(getCurrentUserTC());
+    dispatch(initializedSuccess()); // let promise = dispatch(getCurrentUserTC());
     //
     // promise.then(() => {
     //     dispatch(initializedSuccess());
@@ -2399,13 +2581,18 @@ var initializedSuccessApp = function initializedSuccessApp() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setUserDataAC": () => /* binding */ setUserDataAC,
+/* harmony export */   "setNewUserAC": () => /* binding */ setNewUserAC,
 /* harmony export */   "getCurrentUserTC": () => /* binding */ getCurrentUserTC,
 /* harmony export */   "login": () => /* binding */ login,
+/* harmony export */   "register": () => /* binding */ register,
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-form */ "./node_modules/redux-form/es/index.js");
 /* harmony import */ var _api_Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api/Api */ "./resources/js/components/api/Api.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2418,28 +2605,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import {usersAPI} from "../api/Api";
+
 
 
 var SET_USER_DATA = 'SET-USER-DATA';
-var SET_CURRENT_USER_IMG = 'SET-CURRENT-USER-IMG';
+var SET_NEW_USER = 'SET_NEW_USER';
 var initialState = {
-  userId: null,
-  email: null,
-  login: null,
-  isAuth: false //не залогинен -> true - залогинен
+  auth: {
+    loggedIn: false,
+    user: {}
+  },
+  // id: null,
+  // email: null,
+  // name: null,
+  // isAuth: false, //не залогинен -> true - залогинен
+  newRegistration: false //redirect после регистрации нового пользователя
 
 };
-
-function setUserData(state, data) {
-  return _objectSpread(_objectSpread({}, state), data);
-}
-
-function setCurrentUser(state, userImg) {
-  return _objectSpread(_objectSpread({}, state), {}, {
-    currentUserImg: userImg
-  });
-}
 
 var authReducer = function authReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -2447,57 +2629,50 @@ var authReducer = function authReducer() {
 
   switch (action.type) {
     case SET_USER_DATA:
-      return setUserData(state, action.data);
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loggedIn: true,
+        user: action.payload
+      });
 
-    case SET_CURRENT_USER_IMG:
-      return setCurrentUser(state, action.userImg);
+    case SET_NEW_USER:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        newRegistration: action.newRegistration
+      });
 
     default:
       return state;
   }
 };
 
-var setUserDataAC = function setUserDataAC(userId, email, login, isAuth) {
+var setUserDataAC = function setUserDataAC(user) {
   return {
     type: SET_USER_DATA,
-    data: {
-      userId: userId,
-      email: email,
-      login: login,
-      isAuth: isAuth
-    }
+    payload: user
+  };
+};
+var setNewUserAC = function setNewUserAC(newRegistration) {
+  return {
+    type: SET_NEW_USER,
+    newRegistration: newRegistration
   };
 };
 var getCurrentUserTC = function getCurrentUserTC() {
-  return function (dispatch) {
-    return usersAPI.currentUser().then(function (data) {
-      if (data.resultCode === 0) {
-        var _data$data = data.data,
-            id = _data$data.id,
-            email = _data$data.email,
-            _login = _data$data.login; //деструктеризация
-
-        dispatch(setUserDataAC(id, email, _login, true));
-      }
-    });
-  };
-}; //Thunk
-
-var login = function login(data) {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
-      var data;
+      var token, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return _api_Api__WEBPACK_IMPORTED_MODULE_1__.authApi.authLogin(data);
-
-            case 2:
-              data = _context.sent;
+              token = js_cookie__WEBPACK_IMPORTED_MODULE_2___default().get("token");
+              _context.next = 3;
+              return _api_Api__WEBPACK_IMPORTED_MODULE_1__.authApi.getUser(token);
 
             case 3:
+              data = _context.sent;
+              dispatch(setUserDataAC(data.data.user));
+
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2507,6 +2682,94 @@ var login = function login(data) {
 
     return function (_x) {
       return _ref.apply(this, arguments);
+    };
+  }();
+}; //Thunk
+
+var login = function login(email, password) {
+  return /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
+      var data, date;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _api_Api__WEBPACK_IMPORTED_MODULE_1__.authApi.authLogin(email, password);
+
+            case 2:
+              data = _context2.sent;
+
+              if (data.errors) {
+                dispatch((0,redux_form__WEBPACK_IMPORTED_MODULE_3__.stopSubmit)("login", {
+                  _error: data.errors
+                }));
+              } else {
+                date = new Date();
+                date.setTime(date.getTime() + 180 * 60 * 1000); //минуты - секунды - милисекунды
+
+                js_cookie__WEBPACK_IMPORTED_MODULE_2___default().set("token", data.data.access_token, {
+                  expires: date
+                });
+                dispatch(getCurrentUserTC());
+              } // if (data.resultCode === 0) {
+              //     dispatch(getCurrentUserTC())
+              // } else {
+              //     dispatch(stopSubmit("login", {_error: data.messages[0]}));
+              // }
+
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+};
+var register = function register(name, email, password, password_conformation) {
+  return /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
+      var registerData, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              registerData = {
+                name: name,
+                email: email,
+                password: password,
+                password_conformation: password_conformation
+              };
+              _context3.next = 3;
+              return _api_Api__WEBPACK_IMPORTED_MODULE_1__.authApi.authRegister(registerData);
+
+            case 3:
+              data = _context3.sent;
+
+              if (data.errors) {
+                dispatch((0,redux_form__WEBPACK_IMPORTED_MODULE_3__.stopSubmit)("register", {
+                  _error: data.errors
+                }));
+              } else {
+                dispatch(setNewUserAC(true));
+              }
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
     };
   }();
 };
@@ -2612,23 +2875,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
-/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux-form */ "./node_modules/redux-form/es/reducer.js");
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux-form */ "./node_modules/redux-form/es/reducer.js");
 /* harmony import */ var _app_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-reducer */ "./resources/js/components/reducers/app-reducer.js");
 /* harmony import */ var _navbar_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar-reducer */ "./resources/js/components/reducers/navbar-reducer.js");
+/* harmony import */ var _auth_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth-reducer */ "./resources/js/components/reducers/auth-reducer.js");
 
 
 
 
 
-var reducers = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var reducers = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   navbar: _navbar_reducer__WEBPACK_IMPORTED_MODULE_2__.default,
   app: _app_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
-  form: redux_form__WEBPACK_IMPORTED_MODULE_4__.default
+  form: redux_form__WEBPACK_IMPORTED_MODULE_5__.default,
+  auth: _auth_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 });
-var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_3__.compose;
-var store = (0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(reducers, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_3__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__.default))); // let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_4__.compose;
+var store = (0,redux__WEBPACK_IMPORTED_MODULE_4__.createStore)(reducers, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_4__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__.default))); // let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
@@ -2753,7 +3019,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _sections_header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sections/header/Header */ "./resources/js/components/views/sections/header/Header.jsx");
 /* harmony import */ var _sections_sidebar_SidebarContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../sections/sidebar/SidebarContainer */ "./resources/js/components/views/sections/sidebar/SidebarContainer.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_app_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers/app-reducer */ "./resources/js/components/reducers/app-reducer.js");
+/* harmony import */ var _Helpers_Hoc_WithAuthRedirect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Helpers/Hoc/WithAuthRedirect */ "./resources/js/components/Helpers/Hoc/WithAuthRedirect.js");
 
 
 
@@ -2769,6 +3038,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
@@ -2814,7 +3087,7 @@ function Wrapper(props) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
           className: "breadcrumb",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.NavLink, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.NavLink, {
               to: "/",
               children: "Dashboard"
             })
@@ -2869,26 +3142,21 @@ __webpack_require__.r(__webpack_exports__);
 
 function LoginContainer(props) {
   var onSubmit = function onSubmit(formData) {
-    var data = {
-      email: formData.email,
-      password: formData.password
-    };
-    console.log(data);
-    props.login(data);
+    props.login(formData.email, formData.password);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoginPage__WEBPACK_IMPORTED_MODULE_3__.default, {
     onSubmit: onSubmit
   });
-} // export default LoginContainer;
-// let mapStateToProps = (state) => {
-//     return {
-//         isAuth: state.auth.isAuth,
-//     }
-// }
+}
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: state.auth.loggedIn
+  };
+};
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_5__.compose)((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(null, {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_5__.compose)((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, {
   login: _reducers_auth_reducer__WEBPACK_IMPORTED_MODULE_4__.login
 }))(LoginContainer));
 
@@ -2914,14 +3182,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function LoginPage(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Layout_Wrapper__WEBPACK_IMPORTED_MODULE_2__.default, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-      children: "Login Form"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoginPageForm__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "login-page",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoginPageForm__WEBPACK_IMPORTED_MODULE_3__.default, {
       onSubmit: props.onSubmit
-    })]
+    })
   });
 }
 
@@ -2960,26 +3226,43 @@ function LoginPageForm(_ref) {
     className: "login-form",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
       onSubmit: handleSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+      className: "log-in",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", {
+        children: ["We are ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          children: "Linkos"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: "Welcome back! Log in to your account:"
+      }), error ? Object.keys(error).map(function (item, key) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "list-error",
+          children: error[item]
+        }, key);
+      }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "email",
+          children: "Email:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
           type: "text",
           placeholder: "Login",
           name: "email",
           component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
           validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "password",
+          children: "Password:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
           type: "text",
           placeholder: "Password",
           name: "password",
           component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
           validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
-        })
-      }), error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "list-error",
-        children: error
-      }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
           children: "Login"
         })
@@ -2992,6 +3275,204 @@ var LoginPageReduxForm = (0,redux_form__WEBPACK_IMPORTED_MODULE_5__.default)({
   form: 'login'
 })(LoginPageForm);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginPageReduxForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/views/pages/Register/RegisterContainer.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/views/pages/Register/RegisterContainer.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _RegisterPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegisterPage */ "./resources/js/components/views/pages/Register/RegisterPage.jsx");
+/* harmony import */ var _reducers_auth_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../reducers/auth-reducer */ "./resources/js/components/reducers/auth-reducer.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+
+
+
+
+
+
+
+
+function RegisterContainer(props) {
+  var onSubmit = function onSubmit(formData) {
+    var name = formData.name,
+        email = formData.email,
+        password = formData.password,
+        password_conformation = formData.password_conformation;
+    props.register(name, email, password, password_conformation);
+  };
+
+  if (props.newRegistration) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+      to: "/admin/login"
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_RegisterPage__WEBPACK_IMPORTED_MODULE_3__.default, {
+    onSubmit: onSubmit
+  });
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    newRegistration: state.auth.newRegistration
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_6__.compose)((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, {
+  register: _reducers_auth_reducer__WEBPACK_IMPORTED_MODULE_4__.register
+}))(RegisterContainer));
+
+/***/ }),
+
+/***/ "./resources/js/components/views/pages/Register/RegisterPage.jsx":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/views/pages/Register/RegisterPage.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layout_Wrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Layout/Wrapper */ "./resources/js/components/views/Layout/Wrapper.jsx");
+/* harmony import */ var _RegisterPageForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RegisterPageForm */ "./resources/js/components/views/pages/Register/RegisterPageForm.jsx");
+
+
+
+
+
+function RegisterPage(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "login-page",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_RegisterPageForm__WEBPACK_IMPORTED_MODULE_3__.default, {
+      onSubmit: props.onSubmit
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RegisterPage);
+
+/***/ }),
+
+/***/ "./resources/js/components/views/pages/Register/RegisterPageForm.jsx":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/views/pages/Register/RegisterPageForm.jsx ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux-form */ "./node_modules/redux-form/es/Field.js");
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux-form */ "./node_modules/redux-form/es/reduxForm.js");
+/* harmony import */ var _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Helpers/FormsControls/Forms */ "./resources/js/components/Helpers/FormsControls/Forms.js");
+/* harmony import */ var _Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Helpers/Validation/validation */ "./resources/js/components/Helpers/Validation/validation.js");
+
+
+
+
+
+
+
+function RegisterPageForm(_ref) {
+  var handleSubmit = _ref.handleSubmit,
+      error = _ref.error;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "login-form",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+      onSubmit: handleSubmit,
+      className: "log-in",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", {
+        children: ["We are ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          children: "Linkos"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: "Welcome back! Register your new account:"
+      }), error ? Object.keys(error).map(function (item, key) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "list-error",
+          children: error[item]
+        }, key);
+      }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "name",
+          children: "Name:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+          type: "text",
+          placeholder: "Name",
+          name: "name",
+          component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
+          validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "email",
+          children: "Email:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+          type: "text",
+          placeholder: "email",
+          name: "email",
+          component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
+          validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "password",
+          children: "Password:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+          type: "password",
+          placeholder: "Password",
+          name: "password",
+          component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
+          validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "floating-label",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "password_conformation",
+          children: "Conform Your Password:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(redux_form__WEBPACK_IMPORTED_MODULE_4__.default, {
+          type: "password",
+          placeholder: "Conform Your Password",
+          name: "password_conformation",
+          component: _Helpers_FormsControls_Forms__WEBPACK_IMPORTED_MODULE_2__.Input,
+          validate: [_Helpers_Validation_validation__WEBPACK_IMPORTED_MODULE_3__.required]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          children: "Register"
+        })
+      })]
+    })
+  });
+}
+
+var RegisterPageReduxForm = (0,redux_form__WEBPACK_IMPORTED_MODULE_5__.default)({
+  form: 'register'
+})(RegisterPageForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RegisterPageReduxForm);
 
 /***/ }),
 
@@ -3009,19 +3490,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Layout_Wrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Layout/Wrapper */ "./resources/js/components/views/Layout/Wrapper.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
 
 
 
 
 function Index(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Layout_Wrapper__WEBPACK_IMPORTED_MODULE_2__.default, {
-    children: ["Home page", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink, {
-      to: "admin/login",
-      children: "Login Page"
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Layout_Wrapper__WEBPACK_IMPORTED_MODULE_2__.default, {
+    children: "Home page"
   });
 }
 
@@ -3157,38 +3632,6 @@ function HeaderNavigation(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/views/sections/preloader/preloader.jsx":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/views/sections/preloader/preloader.jsx ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _img_Spinner_1s_297px_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../img/Spinner-1s-297px.svg */ "./resources/js/components/img/Spinner-1s-297px.svg");
-
-
-
-
-function Preloader(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "preloader",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-      src: _img_Spinner_1s_297px_svg__WEBPACK_IMPORTED_MODULE_2__.default,
-      alt: "Preloader"
-    })
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Preloader);
-
-/***/ }),
-
 /***/ "./resources/js/components/views/sections/sidebar/Sidebar.jsx":
 /*!********************************************************************!*\
   !*** ./resources/js/components/views/sections/sidebar/Sidebar.jsx ***!
@@ -3278,6 +3721,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SidebarContainer(props) {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    props.menusItem();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_3__.default, {
     menuItems: props.menuItems
   });
@@ -6005,7 +6451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "input.error,\r\ntextarea.error {\r\n    position: relative;\r\n    border: 1px solid red;\r\n}\r\nspan.list-error {\r\n    color: red;\r\n}\r\n.list-error {\r\n    position: relative;\r\n    border: 1px solid red;\r\n    color: red;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "input.error,\ntextarea.error {\n    position: relative;\n    border: 1px solid red;\n}\nspan.list-error {\n    color: red;\n}\n.list-error {\n    position: relative;\n    border: 1px solid red;\n    color: red;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6096,7 +6542,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block;\n}\n\nbody {\n  line-height: 1;\n  font-family: 'Roboto', sans-serif;\n}\n\nol, ul {\n  list-style: none;\n}\n\nblockquote, q {\n  quotes: none;\n}\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nbody {\n  overflow-x: hidden;\n  overflow-y: auto;\n  height: auto;\n  min-height: 100%;\n  font-size: 14px;\n  line-height: 1.4;\n}\n\n.wrapper, body {\n  height: auto;\n  min-height: 100%;\n}\n\n.wrapper {\n  position: relative;\n}\n\na {\n  color: #ffffff;\n}\n\na:hover,\na:focus {\n  background-color: transparent;\n  text-transform: none;\n  text-decoration: none;\n  color: #ffffff;\n}\n\n.content-wrapper {\n  min-height: 100%;\n  background-color: #ecf0f5;\n  z-index: 800;\n}\n\n.content-wrapper,\n.main-footer {\n  transition: transform .3s ease-in-out,margin .3s ease-in-out;\n  margin-left: 230px;\n  z-index: 820;\n}\n\n.main-header {\n  position: relative;\n  max-height: 100px;\n  z-index: 1030;\n}\n\n.main-header .logo {\n  transition: width .3s ease-in-out;\n  display: block;\n  float: left;\n  height: 50px;\n  font-size: 20px;\n  line-height: 50px;\n  text-align: center;\n  width: 230px;\n  padding: 0 15px;\n  font-weight: 300;\n  overflow: hidden;\n}\n\n.main-header .logo .logo-lg {\n  display: block;\n}\n\n.main-header .logo .logo-mini {\n  display: none;\n}\n\n.skin-blue .main-header .logo {\n  background-color: #367fa9;\n  color: #fff;\n  border-bottom: 0 solid transparent;\n}\n\n.skin-blue .main-header .navbar {\n  background-color: #367fa9;\n}\n\n.main-header .navbar {\n  transition: margin-left .3s ease-in-out;\n  margin-bottom: 0;\n  margin-left: 230px;\n  border: none;\n  min-height: 50px;\n  border-radius: 0;\n}\n\n.main-header .sidebar-toggle:before {\n  content: \"\\F0C9\";\n}\n\n.skin-blue .main-header .navbar .sidebar-toggle {\n  color: #fff;\n}\n\n.main-header .sidebar-toggle {\n  float: left;\n  background-color: transparent;\n  background-image: none;\n  padding: 15px;\n}\n\n.wrapper .login-form input {\n  width: 250px;\n  height: 50px;\n}\n\n.wrapper .login-form button {\n  background-color: #a4efd3;\n  height: 50px;\n  margin: 0 auto;\n  width: 125px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block;\n}\n\nbody {\n  line-height: 1;\n  font-family: 'Roboto', sans-serif;\n}\n\nol, ul {\n  list-style: none;\n}\n\nblockquote, q {\n  quotes: none;\n}\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none;\n}\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\nbody {\n  overflow-x: hidden;\n  overflow-y: auto;\n  height: auto;\n  min-height: 100%;\n  font-size: 14px;\n  line-height: 1.4;\n}\n\n.wrapper, body {\n  height: auto;\n  min-height: 100%;\n}\n\n.wrapper {\n  position: relative;\n}\n\na {\n  color: #ffffff;\n}\n\na:hover,\na:focus {\n  background-color: transparent;\n  text-transform: none;\n  text-decoration: none;\n  color: #ffffff;\n}\n\n.content-wrapper {\n  min-height: 100%;\n  background-color: #ecf0f5;\n  z-index: 800;\n}\n\n.content-wrapper,\n.main-footer {\n  transition: transform .3s ease-in-out,margin .3s ease-in-out;\n  margin-left: 230px;\n  z-index: 820;\n}\n\n.main-header {\n  position: relative;\n  max-height: 100px;\n  z-index: 1030;\n}\n\n.main-header .logo {\n  transition: width .3s ease-in-out;\n  display: block;\n  float: left;\n  height: 50px;\n  font-size: 20px;\n  line-height: 50px;\n  text-align: center;\n  width: 230px;\n  padding: 0 15px;\n  font-weight: 300;\n  overflow: hidden;\n}\n\n.main-header .logo .logo-lg {\n  display: block;\n}\n\n.main-header .logo .logo-mini {\n  display: none;\n}\n\n.skin-blue .main-header .logo {\n  background-color: #367fa9;\n  color: #fff;\n  border-bottom: 0 solid transparent;\n}\n\n.skin-blue .main-header .navbar {\n  background-color: #367fa9;\n}\n\n.main-header .navbar {\n  transition: margin-left .3s ease-in-out;\n  margin-bottom: 0;\n  margin-left: 230px;\n  border: none;\n  min-height: 50px;\n  border-radius: 0;\n}\n\n.main-header .sidebar-toggle:before {\n  content: \"\\F0C9\";\n}\n\n.skin-blue .main-header .navbar .sidebar-toggle {\n  color: #fff;\n}\n\n.main-header .sidebar-toggle {\n  float: left;\n  background-color: transparent;\n  background-image: none;\n  padding: 15px;\n}\n\n.wrapper .list-error {\n  border: none;\n  padding: 15px 0;\n  list-style-type: none;\n}\n\n.wrapper label {\n  font-size: 12.5px;\n  color: #000;\n  opacity: .8;\n  font-weight: 400;\n}\n\n.wrapper form {\n  padding: 40px 30px;\n  background: #fefefe;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  padding-bottom: 20px;\n}\n\n.wrapper form h4 {\n  margin-bottom: 20px;\n  color: rgba(0, 0, 0, 0.5);\n}\n\n.wrapper form h4 span {\n  color: black;\n  font-weight: 700;\n}\n\n.wrapper form p {\n  line-height: 155%;\n  font-size: 14px;\n  color: #000;\n  opacity: .65;\n  font-weight: 400;\n  max-width: 200px;\n  margin-bottom: 40px;\n}\n\n.wrapper .floating-label {\n  position: relative;\n  margin-bottom: 10px;\n  min-height: 90px;\n}\n\n.wrapper .floating-label label {\n  position: absolute;\n  top: calc(50% - 7px);\n  left: 0;\n  opacity: 0;\n  transition: all .3s ease;\n}\n\n.wrapper .floating-label input:not(:-moz-placeholder-shown) {\n  padding: 28px 0px 12px 0px;\n}\n\n.wrapper .floating-label input:not(:-ms-input-placeholder) {\n  padding: 28px 0px 12px 0px;\n}\n\n.wrapper .floating-label input:not(:placeholder-shown) {\n  padding: 28px 0px 12px 0px;\n}\n\n.wrapper .floating-label input:not(:-moz-placeholder-shown) + label {\n  transform: translateY(-10px);\n  opacity: .7;\n}\n\n.wrapper .floating-label input:not(:-ms-input-placeholder) + label {\n  transform: translateY(-10px);\n  opacity: .7;\n}\n\n.wrapper .floating-label input:not(:placeholder-shown) + label {\n  transform: translateY(-10px);\n  opacity: .7;\n}\n\n.wrapper .login-page {\n  height: 100vh;\n  width: 100vw;\n  margin: 0 0;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  background: #f3f2f2;\n}\n\n.wrapper .login-form {\n  display: flex;\n  flex-direction: row;\n  width: auto;\n  height: auto;\n  margin: auto auto;\n  background: #ffffff;\n  border-radius: 4px;\n  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.12);\n}\n\n.wrapper .login-form button {\n  -webkit-appearance: none;\n  width: auto;\n  min-width: 100px;\n  border-radius: 24px;\n  text-align: center;\n  padding: 15px 40px;\n  margin-top: 5px;\n  background-color: #b08bf8;\n  color: #fff;\n  font-size: 14px;\n  margin-left: auto;\n  font-weight: 500;\n  box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.13);\n  border: none;\n  transition: all .3s ease;\n  outline: 0;\n}\n\n.wrapper .login-form button:hover {\n  transform: translateY(-3px);\n  box-shadow: 0 2px 6px -1px rgba(182, 157, 230, 0.65);\n}\n\n.wrapper .login-form button:hover:active {\n  transform: scale(0.99);\n}\n\n.wrapper .login-form input {\n  font-size: 16px;\n  padding: 20px 0;\n  height: 56px;\n  border: none;\n  border-bottom: solid 1px rgba(0, 0, 0, 0.1);\n  background: #fff;\n  min-width: 280px;\n  box-sizing: border-box;\n  transition: all .3s linear;\n  color: #000;\n  font-weight: 400;\n  -webkit-appearance: none;\n}\n\n.wrapper .login-form input:focus {\n  border-bottom: solid 1px #b69de6;\n  outline: 0;\n  box-shadow: 0 2px 6px -8px rgba(182, 157, 230, 0.45);\n}\n\n.wrapper .login-form input.error {\n  border-bottom: 1px solid red;\n}\n\n.wrapper .login-form span.list-error {\n  display: block;\n  border: 1px solid transparent;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6385,21 +6831,6 @@ var ExtendableError = function (_extendableBuiltin2) {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExtendableError);
 
-
-/***/ }),
-
-/***/ "./resources/js/components/img/Spinner-1s-297px.svg":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/img/Spinner-1s-297px.svg ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/Spinner-1s-297px.svg?a557df96f8ab6661ec9ee558c9d9de8b");
 
 /***/ }),
 
@@ -18496,6 +18927,183 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./node_modules/js-cookie/src/js.cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/js-cookie/src/js.cookie.js ***!
+  \*************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+		__WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function decode (s) {
+		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+	}
+
+	function init (converter) {
+		function api() {}
+
+		function set (key, value, attributes) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			attributes = extend({
+				path: '/'
+			}, api.defaults, attributes);
+
+			if (typeof attributes.expires === 'number') {
+				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}
+
+			// We're using "expires" because "max-age" is not supported by IE
+			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+			try {
+				var result = JSON.stringify(value);
+				if (/^[\{\[]/.test(result)) {
+					value = result;
+				}
+			} catch (e) {}
+
+			value = converter.write ?
+				converter.write(value, key) :
+				encodeURIComponent(String(value))
+					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+
+			key = encodeURIComponent(String(key))
+				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+				.replace(/[\(\)]/g, escape);
+
+			var stringifiedAttributes = '';
+			for (var attributeName in attributes) {
+				if (!attributes[attributeName]) {
+					continue;
+				}
+				stringifiedAttributes += '; ' + attributeName;
+				if (attributes[attributeName] === true) {
+					continue;
+				}
+
+				// Considers RFC 6265 section 5.2:
+				// ...
+				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+				//     character:
+				// Consume the characters of the unparsed-attributes up to,
+				// not including, the first %x3B (";") character.
+				// ...
+				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+			}
+
+			return (document.cookie = key + '=' + value + stringifiedAttributes);
+		}
+
+		function get (key, json) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			var jar = {};
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all.
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = decode(parts[0]);
+					cookie = (converter.read || converter)(cookie, name) ||
+						decode(cookie);
+
+					if (json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					jar[name] = cookie;
+
+					if (key === name) {
+						break;
+					}
+				} catch (e) {}
+			}
+
+			return key ? jar[key] : jar;
+		}
+
+		api.set = set;
+		api.get = function (key) {
+			return get(key, false /* read as raw */);
+		};
+		api.getJSON = function (key) {
+			return get(key, true /* read as json */);
+		};
+		api.remove = function (key, attributes) {
+			set(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.defaults = {};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_DataView.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_DataView.js ***!
@@ -23229,6 +23837,138 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isEmpty.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/isEmpty.js ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var baseKeys = __webpack_require__(/*! ./_baseKeys */ "./node_modules/lodash/_baseKeys.js"),
+    getTag = __webpack_require__(/*! ./_getTag */ "./node_modules/lodash/_getTag.js"),
+    isArguments = __webpack_require__(/*! ./isArguments */ "./node_modules/lodash/isArguments.js"),
+    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
+    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js"),
+    isBuffer = __webpack_require__(/*! ./isBuffer */ "./node_modules/lodash/isBuffer.js"),
+    isPrototype = __webpack_require__(/*! ./_isPrototype */ "./node_modules/lodash/_isPrototype.js"),
+    isTypedArray = __webpack_require__(/*! ./isTypedArray */ "./node_modules/lodash/isTypedArray.js");
+
+/** `Object#toString` result references. */
+var mapTag = '[object Map]',
+    setTag = '[object Set]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Checks if `value` is an empty object, collection, map, or set.
+ *
+ * Objects are considered empty if they have no own enumerable string keyed
+ * properties.
+ *
+ * Array-like values such as `arguments` objects, arrays, buffers, strings, or
+ * jQuery-like collections are considered empty if they have a `length` of `0`.
+ * Similarly, maps and sets are considered empty if they have a `size` of `0`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is empty, else `false`.
+ * @example
+ *
+ * _.isEmpty(null);
+ * // => true
+ *
+ * _.isEmpty(true);
+ * // => true
+ *
+ * _.isEmpty(1);
+ * // => true
+ *
+ * _.isEmpty([1, 2, 3]);
+ * // => false
+ *
+ * _.isEmpty({ 'a': 1 });
+ * // => false
+ */
+function isEmpty(value) {
+  if (value == null) {
+    return true;
+  }
+  if (isArrayLike(value) &&
+      (isArray(value) || typeof value == 'string' || typeof value.splice == 'function' ||
+        isBuffer(value) || isTypedArray(value) || isArguments(value))) {
+    return !value.length;
+  }
+  var tag = getTag(value);
+  if (tag == mapTag || tag == setTag) {
+    return !value.size;
+  }
+  if (isPrototype(value)) {
+    return !baseKeys(value).length;
+  }
+  for (var key in value) {
+    if (hasOwnProperty.call(value, key)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+module.exports = isEmpty;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isEqual.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/isEqual.js ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var baseIsEqual = __webpack_require__(/*! ./_baseIsEqual */ "./node_modules/lodash/_baseIsEqual.js");
+
+/**
+ * Performs a deep comparison between two values to determine if they are
+ * equivalent.
+ *
+ * **Note:** This method supports comparing arrays, array buffers, booleans,
+ * date objects, error objects, maps, numbers, `Object` objects, regexes,
+ * sets, strings, symbols, and typed arrays. `Object` objects are compared
+ * by their own, not inherited, enumerable properties. Functions and DOM
+ * nodes are compared by strict equality, i.e. `===`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.isEqual(object, other);
+ * // => true
+ *
+ * object === other;
+ * // => false
+ */
+function isEqual(value, other) {
+  return baseIsEqual(value, other);
+}
+
+module.exports = isEqual;
 
 
 /***/ }),
@@ -77007,6 +77747,494 @@ function createConnectedField(structure) {
 
 /***/ }),
 
+/***/ "./node_modules/redux-form/es/ConnectedFieldArray.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/redux-form/es/ConnectedFieldArray.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createConnectedFieldArray
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/mapValues */ "./node_modules/lodash/mapValues.js");
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_mapValues__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _createFieldArrayProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./createFieldArrayProps */ "./node_modules/redux-form/es/createFieldArrayProps.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+/* harmony import */ var _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./util/validateComponentProp */ "./node_modules/redux-form/es/util/validateComponentProp.js");
+
+
+
+
+
+
+
+
+
+
+
+var propsToNotUpdateFor = ['_reduxForm', 'value'];
+function createConnectedFieldArray(structure) {
+  var deepEqual = structure.deepEqual,
+      getIn = structure.getIn,
+      size = structure.size,
+      equals = structure.equals,
+      orderChanged = structure.orderChanged;
+
+  var getSyncError = function getSyncError(syncErrors, name) {
+    // For an array, the error can _ONLY_ be under _error.
+    // This is why this getSyncError is not the same as the
+    // one in Field.
+    return _structure_plain__WEBPACK_IMPORTED_MODULE_7__.default.getIn(syncErrors, name + "._error");
+  };
+
+  var getSyncWarning = function getSyncWarning(syncWarnings, name) {
+    // For an array, the warning can _ONLY_ be under _warning.
+    // This is why this getSyncError is not the same as the
+    // one in Field.
+    return getIn(syncWarnings, name + "._warning");
+  };
+
+  var ConnectedFieldArray = /*#__PURE__*/function (_Component) {
+    _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(ConnectedFieldArray, _Component);
+
+    function ConnectedFieldArray() {
+      var _this;
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+      _this.ref = react__WEBPACK_IMPORTED_MODULE_4__.createRef();
+
+      _this.getValue = function (index) {
+        return _this.props.value && getIn(_this.props.value, String(index));
+      };
+
+      return _this;
+    }
+
+    var _proto = ConnectedFieldArray.prototype;
+
+    _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+      var _this2 = this;
+
+      // Update if the elements of the value array was updated.
+      var thisValue = this.props.value;
+      var nextValue = nextProps.value;
+
+      if (thisValue && nextValue) {
+        var nextValueItemsSame = equals(nextValue, thisValue); //.every(val => ~thisValue.indexOf(val))
+
+        var nextValueItemsOrderChanged = orderChanged(thisValue, nextValue);
+        var thisValueLength = thisValue.length || thisValue.size;
+        var nextValueLength = nextValue.length || nextValue.size;
+
+        if (thisValueLength !== nextValueLength || nextValueItemsSame && nextValueItemsOrderChanged || nextProps.rerenderOnEveryChange && thisValue.some(function (val, index) {
+          return !deepEqual(val, nextValue[index]);
+        })) {
+          return true;
+        }
+      }
+
+      var nextPropsKeys = Object.keys(nextProps);
+      var thisPropsKeys = Object.keys(this.props); // if we have children, we MUST update in React 16
+      // https://twitter.com/erikras/status/915866544558788608
+
+      return !!(this.props.children || nextProps.children || nextPropsKeys.length !== thisPropsKeys.length || nextPropsKeys.some(function (prop) {
+        // useful to debug rerenders
+        // if (!plain.deepEqual(this.props[ prop ], nextProps[ prop ])) {
+        //   console.info(prop, 'changed', this.props[ prop ], '==>', nextProps[ prop ])
+        // }
+        return !~propsToNotUpdateFor.indexOf(prop) && !deepEqual(_this2.props[prop], nextProps[prop]);
+      }));
+    };
+
+    _proto.getRenderedComponent = function getRenderedComponent() {
+      return this.ref.current;
+    };
+
+    _proto.render = function render() {
+      var _this$props = this.props,
+          component = _this$props.component,
+          forwardRef = _this$props.forwardRef,
+          name = _this$props.name,
+          _reduxForm = _this$props._reduxForm,
+          validate = _this$props.validate,
+          warn = _this$props.warn,
+          rerenderOnEveryChange = _this$props.rerenderOnEveryChange,
+          rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default()(_this$props, ["component", "forwardRef", "name", "_reduxForm", "validate", "warn", "rerenderOnEveryChange"]);
+
+      var props = (0,_createFieldArrayProps__WEBPACK_IMPORTED_MODULE_8__.default)(structure, name, _reduxForm.form, _reduxForm.sectionPrefix, this.getValue, rest);
+
+      if (forwardRef) {
+        props.ref = this.ref;
+      }
+
+      return (0,react__WEBPACK_IMPORTED_MODULE_4__.createElement)(component, props);
+    };
+
+    _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ConnectedFieldArray, [{
+      key: "dirty",
+      get: function get() {
+        return this.props.dirty;
+      }
+    }, {
+      key: "pristine",
+      get: function get() {
+        return this.props.pristine;
+      }
+    }, {
+      key: "value",
+      get: function get() {
+        return this.props.value;
+      }
+    }]);
+
+    return ConnectedFieldArray;
+  }(react__WEBPACK_IMPORTED_MODULE_4__.Component);
+
+  ConnectedFieldArray.propTypes = {
+    component: _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_9__.default,
+    props: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().object),
+    rerenderOnEveryChange: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool)
+  };
+  ConnectedFieldArray.defaultProps = {
+    rerenderOnEveryChange: false
+  };
+  var connector = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.connect)(function (state, ownProps) {
+    var name = ownProps.name,
+        _ownProps$_reduxForm = ownProps._reduxForm,
+        initialValues = _ownProps$_reduxForm.initialValues,
+        getFormState = _ownProps$_reduxForm.getFormState;
+    var formState = getFormState(state);
+    var initial = getIn(formState, "initial." + name) || initialValues && getIn(initialValues, name);
+    var value = getIn(formState, "values." + name);
+    var submitting = getIn(formState, 'submitting');
+    var syncError = getSyncError(getIn(formState, 'syncErrors'), name);
+    var syncWarning = getSyncWarning(getIn(formState, 'syncWarnings'), name);
+    var pristine = deepEqual(value, initial);
+    return {
+      asyncError: getIn(formState, "asyncErrors." + name + "._error"),
+      dirty: !pristine,
+      pristine: pristine,
+      state: getIn(formState, "fields." + name),
+      submitError: getIn(formState, "submitErrors." + name + "._error"),
+      submitFailed: getIn(formState, 'submitFailed'),
+      submitting: submitting,
+      syncError: syncError,
+      syncWarning: syncWarning,
+      value: value,
+      length: size(value)
+    };
+  }, function (dispatch, ownProps) {
+    var name = ownProps.name,
+        _reduxForm = ownProps._reduxForm;
+    var arrayInsert = _reduxForm.arrayInsert,
+        arrayMove = _reduxForm.arrayMove,
+        arrayPop = _reduxForm.arrayPop,
+        arrayPush = _reduxForm.arrayPush,
+        arrayRemove = _reduxForm.arrayRemove,
+        arrayRemoveAll = _reduxForm.arrayRemoveAll,
+        arrayShift = _reduxForm.arrayShift,
+        arraySplice = _reduxForm.arraySplice,
+        arraySwap = _reduxForm.arraySwap,
+        arrayUnshift = _reduxForm.arrayUnshift;
+    return lodash_mapValues__WEBPACK_IMPORTED_MODULE_3___default()({
+      arrayInsert: arrayInsert,
+      arrayMove: arrayMove,
+      arrayPop: arrayPop,
+      arrayPush: arrayPush,
+      arrayRemove: arrayRemove,
+      arrayRemoveAll: arrayRemoveAll,
+      arrayShift: arrayShift,
+      arraySplice: arraySplice,
+      arraySwap: arraySwap,
+      arrayUnshift: arrayUnshift
+    }, function (actionCreator) {
+      return (0,redux__WEBPACK_IMPORTED_MODULE_10__.bindActionCreators)(actionCreator.bind(null, name), dispatch);
+    });
+  }, undefined, {
+    forwardRef: true
+  });
+  return connector(ConnectedFieldArray);
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/ConnectedFields.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/redux-form/es/ConnectedFields.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createConnectedFields
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _createFieldProps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./createFieldProps */ "./node_modules/redux-form/es/createFieldProps.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+/* harmony import */ var _events_onChangeValue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./events/onChangeValue */ "./node_modules/redux-form/es/events/onChangeValue.js");
+/* harmony import */ var _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./util/validateComponentProp */ "./node_modules/redux-form/es/util/validateComponentProp.js");
+
+
+
+
+
+
+
+
+
+
+var propsToNotUpdateFor = ['_reduxForm'];
+function createConnectedFields(structure) {
+  var deepEqual = structure.deepEqual,
+      getIn = structure.getIn,
+      size = structure.size;
+
+  var getSyncError = function getSyncError(syncErrors, name) {
+    // Because the error for this field might not be at a level in the error structure where
+    // it can be set directly, it might need to be unwrapped from the _error property
+    return _structure_plain__WEBPACK_IMPORTED_MODULE_6__.default.getIn(syncErrors, name + "._error") || _structure_plain__WEBPACK_IMPORTED_MODULE_6__.default.getIn(syncErrors, name);
+  };
+
+  var getSyncWarning = function getSyncWarning(syncWarnings, name) {
+    var warning = getIn(syncWarnings, name); // Because the warning for this field might not be at a level in the warning structure where
+    // it can be set directly, it might need to be unwrapped from the _warning property
+
+    return warning && warning._warning ? warning._warning : warning;
+  };
+
+  var ConnectedFields = /*#__PURE__*/function (_React$Component) {
+    _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(ConnectedFields, _React$Component);
+
+    function ConnectedFields(props) {
+      var _this;
+
+      _this = _React$Component.call(this, props) || this;
+      _this.onChangeFns = {};
+      _this.onFocusFns = {};
+      _this.onBlurFns = {};
+      _this.ref = react__WEBPACK_IMPORTED_MODULE_3__.createRef();
+
+      _this.prepareEventHandlers = function (_ref) {
+        var names = _ref.names;
+        return names.forEach(function (name) {
+          _this.onChangeFns[name] = function (event) {
+            return _this.handleChange(name, event);
+          };
+
+          _this.onFocusFns[name] = function () {
+            return _this.handleFocus(name);
+          };
+
+          _this.onBlurFns[name] = function (event) {
+            return _this.handleBlur(name, event);
+          };
+        });
+      };
+
+      _this.handleChange = function (name, event) {
+        var _this$props = _this.props,
+            dispatch = _this$props.dispatch,
+            parse = _this$props.parse,
+            _reduxForm = _this$props._reduxForm;
+        var value = (0,_events_onChangeValue__WEBPACK_IMPORTED_MODULE_7__.default)(event, {
+          name: name,
+          parse: parse
+        });
+        dispatch(_reduxForm.change(name, value)); // call post-change callback
+
+        if (_reduxForm.asyncValidate) {
+          _reduxForm.asyncValidate(name, value, 'change');
+        }
+      };
+
+      _this.handleFocus = function (name) {
+        var _this$props2 = _this.props,
+            dispatch = _this$props2.dispatch,
+            _reduxForm = _this$props2._reduxForm;
+        dispatch(_reduxForm.focus(name));
+      };
+
+      _this.handleBlur = function (name, event) {
+        var _this$props3 = _this.props,
+            dispatch = _this$props3.dispatch,
+            parse = _this$props3.parse,
+            _reduxForm = _this$props3._reduxForm;
+        var value = (0,_events_onChangeValue__WEBPACK_IMPORTED_MODULE_7__.default)(event, {
+          name: name,
+          parse: parse
+        }); // dispatch blur action
+
+        dispatch(_reduxForm.blur(name, value)); // call post-blur callback
+
+        if (_reduxForm.asyncValidate) {
+          _reduxForm.asyncValidate(name, value, 'blur');
+        }
+      };
+
+      _this.prepareEventHandlers(props);
+
+      return _this;
+    }
+
+    var _proto = ConnectedFields.prototype;
+
+    _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+      var _this2 = this;
+
+      if (this.props.names !== nextProps.names && (size(this.props.names) !== size(nextProps.names) || nextProps.names.some(function (nextName) {
+        return !_this2.props._fields[nextName];
+      }))) {
+        // names has changed. The cached event handlers need to be updated
+        this.prepareEventHandlers(nextProps);
+      }
+    };
+
+    _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+      var _this3 = this;
+
+      var nextPropsKeys = Object.keys(nextProps);
+      var thisPropsKeys = Object.keys(this.props); // if we have children, we MUST update in React 16
+      // https://twitter.com/erikras/status/915866544558788608
+
+      return !!(this.props.children || nextProps.children || nextPropsKeys.length !== thisPropsKeys.length || nextPropsKeys.some(function (prop) {
+        return !~propsToNotUpdateFor.indexOf(prop) && !deepEqual(_this3.props[prop], nextProps[prop]);
+      }));
+    };
+
+    _proto.isDirty = function isDirty() {
+      var _fields = this.props._fields;
+      return Object.keys(_fields).some(function (name) {
+        return _fields[name].dirty;
+      });
+    };
+
+    _proto.getValues = function getValues() {
+      var _fields = this.props._fields;
+      return Object.keys(_fields).reduce(function (accumulator, name) {
+        return _structure_plain__WEBPACK_IMPORTED_MODULE_6__.default.setIn(accumulator, name, _fields[name].value);
+      }, {});
+    };
+
+    _proto.getRenderedComponent = function getRenderedComponent() {
+      return this.ref.current;
+    };
+
+    _proto.render = function render() {
+      var _this4 = this;
+
+      var _this$props4 = this.props,
+          component = _this$props4.component,
+          forwardRef = _this$props4.forwardRef,
+          _fields = _this$props4._fields,
+          _reduxForm = _this$props4._reduxForm,
+          rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_this$props4, ["component", "forwardRef", "_fields", "_reduxForm"]);
+
+      var sectionPrefix = _reduxForm.sectionPrefix,
+          form = _reduxForm.form;
+
+      var _Object$keys$reduce = Object.keys(_fields).reduce(function (accumulator, name) {
+        var connectedProps = _fields[name];
+
+        var _createFieldProps = (0,_createFieldProps__WEBPACK_IMPORTED_MODULE_8__.default)(structure, name, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, connectedProps, {}, rest, {
+          form: form,
+          onBlur: _this4.onBlurFns[name],
+          onChange: _this4.onChangeFns[name],
+          onFocus: _this4.onFocusFns[name]
+        })),
+            custom = _createFieldProps.custom,
+            fieldProps = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_createFieldProps, ["custom"]);
+
+        accumulator.custom = custom;
+        var fieldName = sectionPrefix ? name.replace(sectionPrefix + ".", '') : name;
+        return _structure_plain__WEBPACK_IMPORTED_MODULE_6__.default.setIn(accumulator, fieldName, fieldProps);
+      }, {}),
+          custom = _Object$keys$reduce.custom,
+          props = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_Object$keys$reduce, ["custom"]);
+
+      if (forwardRef) {
+        props.ref = this.ref;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_3__.createElement(component, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {}, custom));
+    };
+
+    return ConnectedFields;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+  ConnectedFields.propTypes = {
+    component: _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_9__.default,
+    _fields: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object.isRequired),
+    props: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object)
+  };
+  var connector = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.connect)(function (state, ownProps) {
+    var names = ownProps.names,
+        _ownProps$_reduxForm = ownProps._reduxForm,
+        initialValues = _ownProps$_reduxForm.initialValues,
+        getFormState = _ownProps$_reduxForm.getFormState;
+    var formState = getFormState(state);
+    return {
+      _fields: names.reduce(function (accumulator, name) {
+        var initialState = getIn(formState, "initial." + name);
+        var initial = initialState !== undefined ? initialState : initialValues && getIn(initialValues, name);
+        var value = getIn(formState, "values." + name);
+        var syncError = getSyncError(getIn(formState, 'syncErrors'), name);
+        var syncWarning = getSyncWarning(getIn(formState, 'syncWarnings'), name);
+        var submitting = getIn(formState, 'submitting');
+        var pristine = value === initial;
+        accumulator[name] = {
+          asyncError: getIn(formState, "asyncErrors." + name),
+          asyncValidating: getIn(formState, 'asyncValidating') === name,
+          dirty: !pristine,
+          initial: initial,
+          pristine: pristine,
+          state: getIn(formState, "fields." + name),
+          submitError: getIn(formState, "submitErrors." + name),
+          submitFailed: getIn(formState, 'submitFailed'),
+          submitting: submitting,
+          syncError: syncError,
+          syncWarning: syncWarning,
+          value: value,
+          _value: ownProps.value // save value passed in (for radios)
+
+        };
+        return accumulator;
+      }, {})
+    };
+  }, undefined, undefined, {
+    forwardRef: true
+  });
+  return connector(ConnectedFields);
+}
+
+/***/ }),
+
 /***/ "./node_modules/redux-form/es/Field.js":
 /*!*********************************************!*\
   !*** ./node_modules/redux-form/es/Field.js ***!
@@ -77023,6 +78251,234 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createField__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/FieldArray.js":
+/*!**************************************************!*\
+  !*** ./node_modules/redux-form/es/FieldArray.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _createFieldArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createFieldArray */ "./node_modules/redux-form/es/createFieldArray.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createFieldArray__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/Fields.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-form/es/Fields.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _createFields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createFields */ "./node_modules/redux-form/es/createFields.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createFields__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/Form.js":
+/*!********************************************!*\
+  !*** ./node_modules/redux-form/es/Form.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+
+
+
+
+
+
+var Form = /*#__PURE__*/function (_Component) {
+  _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1___default()(Form, _Component);
+
+  function Form(props) {
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+
+    if (!props._reduxForm) {
+      throw new Error('Form must be inside a component decorated with reduxForm()');
+    }
+
+    return _this;
+  }
+
+  var _proto = Form.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.props._reduxForm.registerInnerOnSubmit(this.props.onSubmit);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.onSubmit !== prevProps.onSubmit) {
+      this.props._reduxForm.registerInnerOnSubmit(this.props.onSubmit);
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        _reduxForm = _this$props._reduxForm,
+        rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default()(_this$props, ["_reduxForm"]);
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("form", rest);
+  };
+
+  return Form;
+}(react__WEBPACK_IMPORTED_MODULE_2__.Component);
+
+Form.propTypes = {
+  onSubmit: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func.isRequired),
+  _reduxForm: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_4__.withReduxForm)(Form));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/FormName.js":
+/*!************************************************!*\
+  !*** ./node_modules/redux-form/es/FormName.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+
+
+
+var FormName = function FormName(_ref) {
+  var children = _ref.children,
+      _reduxForm = _ref._reduxForm;
+  return children({
+    form: _reduxForm && _reduxForm.form,
+    sectionPrefix: _reduxForm && _reduxForm.sectionPrefix
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_1__.withReduxForm)(FormName));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/FormSection.js":
+/*!***************************************************!*\
+  !*** ./node_modules/redux-form/es/FormSection.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _util_prefixName__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util/prefixName */ "./node_modules/redux-form/es/util/prefixName.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+/* harmony import */ var _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/validateComponentProp */ "./node_modules/redux-form/es/util/validateComponentProp.js");
+
+
+
+
+
+
+
+
+
+var FormSection = /*#__PURE__*/function (_Component) {
+  _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(FormSection, _Component);
+
+  function FormSection(props) {
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+
+    if (!props._reduxForm) {
+      throw new Error('FormSection must be inside a component decorated with reduxForm()');
+    }
+
+    return _this;
+  }
+
+  var _proto = FormSection.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        _reduxForm = _this$props._reduxForm,
+        children = _this$props.children,
+        name = _this$props.name,
+        component = _this$props.component,
+        rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_this$props, ["_reduxForm", "children", "name", "component"]);
+
+    if (react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(children)) {
+      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(_ReduxFormContext__WEBPACK_IMPORTED_MODULE_5__.ReduxFormContext.Provider, {
+        value: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props._reduxForm, {
+          sectionPrefix: (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_6__.default)(this.props, name)
+        }),
+        children: children
+      });
+    }
+
+    return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(_ReduxFormContext__WEBPACK_IMPORTED_MODULE_5__.ReduxFormContext.Provider, {
+      value: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props._reduxForm, {
+        sectionPrefix: (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_6__.default)(this.props, name)
+      }),
+      children: (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(component, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, rest, {
+        children: children
+      }))
+    });
+  };
+
+  return FormSection;
+}(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+FormSection.propTypes = {
+  name: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired),
+  component: _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_7__.default
+};
+FormSection.defaultProps = {
+  component: 'div'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_5__.withReduxForm)(FormSection));
 
 /***/ }),
 
@@ -77978,6 +79434,269 @@ function createField(structure) {
 
 /***/ }),
 
+/***/ "./node_modules/redux-form/es/createFieldArray.js":
+/*!********************************************************!*\
+  !*** ./node_modules/redux-form/es/createFieldArray.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createFieldArray
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ConnectedFieldArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ConnectedFieldArray */ "./node_modules/redux-form/es/ConnectedFieldArray.js");
+/* harmony import */ var _util_prefixName__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/prefixName */ "./node_modules/redux-form/es/util/prefixName.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+/* harmony import */ var _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util/validateComponentProp */ "./node_modules/redux-form/es/util/validateComponentProp.js");
+
+
+
+
+
+
+
+
+
+
+
+var toArray = function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+};
+
+var wrapError = function wrapError(fn, key) {
+  return fn && function () {
+    var validators = toArray(fn);
+
+    for (var i = 0; i < validators.length; i++) {
+      var result = validators[i].apply(validators, arguments);
+
+      if (result) {
+        var _ref;
+
+        return _ref = {}, _ref[key] = result, _ref;
+      }
+    }
+  };
+};
+
+function createFieldArray(structure) {
+  var ConnectedFieldArray = (0,_ConnectedFieldArray__WEBPACK_IMPORTED_MODULE_6__.default)(structure);
+
+  var FieldArray = /*#__PURE__*/function (_Component) {
+    _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(FieldArray, _Component);
+
+    function FieldArray(props) {
+      var _this;
+
+      _this = _Component.call(this, props) || this;
+      _this.ref = react__WEBPACK_IMPORTED_MODULE_3__.createRef();
+
+      if (!props._reduxForm) {
+        throw new Error('FieldArray must be inside a component decorated with reduxForm()');
+      }
+
+      return _this;
+    }
+
+    var _proto = FieldArray.prototype;
+
+    _proto.componentDidMount = function componentDidMount() {
+      var _this2 = this;
+
+      this.props._reduxForm.register(this.name, 'FieldArray', function () {
+        return wrapError(_this2.props.validate, '_error');
+      }, function () {
+        return wrapError(_this2.props.warn, '_warning');
+      });
+    };
+
+    _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+      var oldName = (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_7__.default)(this.props, this.props.name);
+      var newName = (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_7__.default)(nextProps, nextProps.name);
+
+      if (oldName !== newName) {
+        // unregister old name
+        this.props._reduxForm.unregister(oldName); // register new name
+
+
+        this.props._reduxForm.register(newName, 'FieldArray');
+      }
+    };
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      this.props._reduxForm.unregister(this.name);
+    };
+
+    _proto.getRenderedComponent = function getRenderedComponent() {
+      invariant__WEBPACK_IMPORTED_MODULE_5___default()(this.props.forwardRef, 'If you want to access getRenderedComponent(), ' + 'you must specify a forwardRef prop to FieldArray');
+      return this.ref && this.ref.current.getRenderedComponent();
+    };
+
+    _proto.render = function render() {
+      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(ConnectedFieldArray, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props, {
+        name: this.name,
+        ref: this.ref
+      }));
+    };
+
+    _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(FieldArray, [{
+      key: "name",
+      get: function get() {
+        return (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_7__.default)(this.props, this.props.name);
+      }
+    }, {
+      key: "dirty",
+      get: function get() {
+        return !this.ref || this.ref.current.dirty;
+      }
+    }, {
+      key: "pristine",
+      get: function get() {
+        return !!(this.ref && this.ref.current.pristine);
+      }
+    }, {
+      key: "value",
+      get: function get() {
+        return this.ref ? this.ref.current.value : undefined;
+      }
+    }]);
+
+    return FieldArray;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+  FieldArray.propTypes = {
+    name: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired),
+    component: _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_8__.default,
+    props: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+    validate: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_4___default().func))]),
+    warn: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_4___default().func))]),
+    forwardRef: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+    _reduxForm: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object)
+  };
+  return (0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_9__.withReduxForm)(FieldArray);
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/createFieldArrayProps.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/redux-form/es/createFieldArrayProps.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createFieldArrayProps
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function createFieldArrayProps(_ref, name, form, sectionPrefix, getValue, _ref2) {
+  var getIn = _ref.getIn;
+
+  var arrayInsert = _ref2.arrayInsert,
+      arrayMove = _ref2.arrayMove,
+      arrayPop = _ref2.arrayPop,
+      arrayPush = _ref2.arrayPush,
+      arrayRemove = _ref2.arrayRemove,
+      arrayRemoveAll = _ref2.arrayRemoveAll,
+      arrayShift = _ref2.arrayShift,
+      arraySplice = _ref2.arraySplice,
+      arraySwap = _ref2.arraySwap,
+      arrayUnshift = _ref2.arrayUnshift,
+      asyncError = _ref2.asyncError,
+      dirty = _ref2.dirty,
+      length = _ref2.length,
+      pristine = _ref2.pristine,
+      submitError = _ref2.submitError,
+      state = _ref2.state,
+      submitFailed = _ref2.submitFailed,
+      submitting = _ref2.submitting,
+      syncError = _ref2.syncError,
+      syncWarning = _ref2.syncWarning,
+      value = _ref2.value,
+      props = _ref2.props,
+      rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_ref2, ["arrayInsert", "arrayMove", "arrayPop", "arrayPush", "arrayRemove", "arrayRemoveAll", "arrayShift", "arraySplice", "arraySwap", "arrayUnshift", "asyncError", "dirty", "length", "pristine", "submitError", "state", "submitFailed", "submitting", "syncError", "syncWarning", "value", "props"]);
+
+  var error = syncError || asyncError || submitError;
+  var warning = syncWarning;
+  var fieldName = sectionPrefix ? name.replace(sectionPrefix + ".", '') : name;
+
+  var finalProps = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    fields: {
+      _isFieldArray: true,
+      forEach: function forEach(callback) {
+        return (value || []).forEach(function (item, index) {
+          return callback(fieldName + "[" + index + "]", index, finalProps.fields);
+        });
+      },
+      get: getValue,
+      getAll: function getAll() {
+        return value;
+      },
+      insert: arrayInsert,
+      length: length,
+      map: function map(callback) {
+        return (value || []).map(function (item, index) {
+          return callback(fieldName + "[" + index + "]", index, finalProps.fields);
+        });
+      },
+      move: arrayMove,
+      name: name,
+      pop: function pop() {
+        arrayPop();
+        return getIn(value, String(length - 1));
+      },
+      push: arrayPush,
+      reduce: function reduce(callback, initial) {
+        return (value || []).reduce(function (accumulator, item, index) {
+          return callback(accumulator, fieldName + "[" + index + "]", index, finalProps.fields);
+        }, initial);
+      },
+      remove: arrayRemove,
+      removeAll: arrayRemoveAll,
+      shift: function shift() {
+        arrayShift();
+        return getIn(value, '0');
+      },
+      splice: arraySplice,
+      swap: arraySwap,
+      unshift: arrayUnshift
+    },
+    meta: {
+      dirty: dirty,
+      error: error,
+      form: form,
+      warning: warning,
+      invalid: !!error,
+      pristine: pristine,
+      submitting: submitting,
+      submitFailed: submitFailed,
+      valid: !error
+    }
+  }, props, {}, rest);
+
+  return finalProps;
+}
+
+/***/ }),
+
 /***/ "./node_modules/redux-form/es/createFieldProps.js":
 /*!********************************************************!*\
   !*** ./node_modules/redux-form/es/createFieldProps.js ***!
@@ -78101,6 +79820,387 @@ function createFieldProps(_ref, name, _ref2) {
       visited: !!(state && getIn(state, 'visited'))
     }),
     custom: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1___default()({}, custom, {}, props)
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/createFields.js":
+/*!****************************************************!*\
+  !*** ./node_modules/redux-form/es/createFields.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createFields
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _ConnectedFields__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ConnectedFields */ "./node_modules/redux-form/es/ConnectedFields.js");
+/* harmony import */ var _util_shallowCompare__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./util/shallowCompare */ "./node_modules/redux-form/es/util/shallowCompare.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+/* harmony import */ var _util_prefixName__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./util/prefixName */ "./node_modules/redux-form/es/util/prefixName.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+/* harmony import */ var _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/validateComponentProp */ "./node_modules/redux-form/es/util/validateComponentProp.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var validateNameProp = function validateNameProp(prop) {
+  if (!prop) {
+    return new Error('No "names" prop was specified <Fields/>');
+  }
+
+  if (!Array.isArray(prop) && !prop._isFieldArray) {
+    return new Error('Invalid prop "names" supplied to <Fields/>. Must be either an array of strings or the fields array generated by FieldArray.');
+  }
+};
+
+var warnAndValidatePropType = prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_4___default().func)), prop_types__WEBPACK_IMPORTED_MODULE_4___default().objectOf(prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_4___default().func))]))]);
+var fieldsPropTypes = {
+  component: _util_validateComponentProp__WEBPACK_IMPORTED_MODULE_7__.default,
+  format: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+  parse: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
+  props: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+  forwardRef: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+  validate: warnAndValidatePropType,
+  warn: warnAndValidatePropType
+};
+
+var getFieldWarnAndValidate = function getFieldWarnAndValidate(prop, name) {
+  return Array.isArray(prop) || typeof prop === 'function' ? prop : lodash_get__WEBPACK_IMPORTED_MODULE_6___default()(prop, name, undefined);
+};
+
+function createFields(structure) {
+  var ConnectedFields = (0,_ConnectedFields__WEBPACK_IMPORTED_MODULE_8__.default)(structure);
+
+  var Fields = /*#__PURE__*/function (_Component) {
+    _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(Fields, _Component);
+
+    function Fields(props) {
+      var _this;
+
+      _this = _Component.call(this, props) || this;
+      _this.connected = (0,react__WEBPACK_IMPORTED_MODULE_3__.createRef)();
+
+      if (!props._reduxForm) {
+        throw new Error('Fields must be inside a component decorated with reduxForm()');
+      }
+
+      var error = validateNameProp(props.names);
+
+      if (error) {
+        throw error;
+      }
+
+      return _this;
+    }
+
+    var _proto = Fields.prototype;
+
+    _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+      return (0,_util_shallowCompare__WEBPACK_IMPORTED_MODULE_9__.default)(this, nextProps);
+    };
+
+    _proto.componentDidMount = function componentDidMount() {
+      this.registerFields(this.props.names);
+    };
+
+    _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
+      if (!_structure_plain__WEBPACK_IMPORTED_MODULE_10__.default.deepEqual(this.props.names, nextProps.names)) {
+        var props = this.props;
+        var unregister = props._reduxForm.unregister; // unregister old name
+
+        this.props.names.forEach(function (name) {
+          return unregister((0,_util_prefixName__WEBPACK_IMPORTED_MODULE_11__.default)(props, name));
+        }); // register new name
+
+        this.registerFields(nextProps.names);
+      }
+    };
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      var props = this.props;
+      var unregister = props._reduxForm.unregister;
+      this.props.names.forEach(function (name) {
+        return unregister((0,_util_prefixName__WEBPACK_IMPORTED_MODULE_11__.default)(props, name));
+      });
+    };
+
+    _proto.registerFields = function registerFields(names) {
+      var _this2 = this;
+
+      var props = this.props;
+      var register = props._reduxForm.register;
+      names.forEach(function (name) {
+        return register((0,_util_prefixName__WEBPACK_IMPORTED_MODULE_11__.default)(props, name), 'Field', function () {
+          return getFieldWarnAndValidate(_this2.props.validate, name);
+        }, function () {
+          return getFieldWarnAndValidate(_this2.props.warn, name);
+        });
+      });
+    };
+
+    _proto.getRenderedComponent = function getRenderedComponent() {
+      invariant__WEBPACK_IMPORTED_MODULE_5___default()(this.props.forwardRef, 'If you want to access getRenderedComponent(), ' + 'you must specify a forwardRef prop to Fields');
+      return this.connected.current ? this.connected.current.getRenderedComponent() : null;
+    };
+
+    _proto.render = function render() {
+      var props = this.props;
+      return (0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(ConnectedFields, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props, {
+        names: this.props.names.map(function (name) {
+          return (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_11__.default)(props, name);
+        }),
+        ref: this.connected
+      }));
+    };
+
+    _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Fields, [{
+      key: "names",
+      get: function get() {
+        var props = this.props;
+        return this.props.names.map(function (name) {
+          return (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_11__.default)(props, name);
+        });
+      }
+    }, {
+      key: "dirty",
+      get: function get() {
+        return this.connected.current ? this.connected.current.isDirty() : false;
+      }
+    }, {
+      key: "pristine",
+      get: function get() {
+        return !this.dirty;
+      }
+    }, {
+      key: "values",
+      get: function get() {
+        return this.connected.current ? this.connected.current.getValues() : {};
+      }
+    }]);
+
+    return Fields;
+  }(react__WEBPACK_IMPORTED_MODULE_3__.Component);
+
+  Fields.propTypes = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    names: function names(props, propName) {
+      return validateNameProp(props[propName]);
+    }
+  }, fieldsPropTypes);
+  return (0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_12__.withReduxForm)(Fields);
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/createFormValueSelector.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/redux-form/es/createFormValueSelector.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createFormValueSelector
+/* harmony export */ });
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js");
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+function createFormValueSelector(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    invariant__WEBPACK_IMPORTED_MODULE_0___default()(form, 'Form value must be specified');
+
+    var nonNullGetFormState = getFormState || function (state) {
+      return getIn(state, 'form');
+    };
+
+    return function (state) {
+      for (var _len = arguments.length, fields = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        fields[_key - 1] = arguments[_key];
+      }
+
+      invariant__WEBPACK_IMPORTED_MODULE_0___default()(fields.length, 'No fields specified');
+      return fields.length === 1 ? // only selecting one field, so return its value
+      getIn(nonNullGetFormState(state), form + ".values." + fields[0]) : // selecting many fields, so return an object of field values
+      fields.reduce(function (accumulator, field) {
+        var value = getIn(nonNullGetFormState(state), form + ".values." + field);
+        return value === undefined ? accumulator : _structure_plain__WEBPACK_IMPORTED_MODULE_1__.default.setIn(accumulator, field, value);
+      }, {});
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/createFormValues.js":
+/*!********************************************************!*\
+  !*** ./node_modules/redux-form/es/createFormValues.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createValues
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "./node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/mapValues */ "./node_modules/lodash/mapValues.js");
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_mapValues__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isEmpty */ "./node_modules/lodash/isEmpty.js");
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _util_prefixName__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util/prefixName */ "./node_modules/redux-form/es/util/prefixName.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+
+
+
+
+
+
+
+
+
+
+function createValues(_ref) {
+  var getIn = _ref.getIn;
+  return function (firstArg) {
+    for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      rest[_key - 1] = arguments[_key];
+    }
+
+    // create a class that reads current form name and creates a selector
+    // return
+    return function (Component) {
+      var FormValues = /*#__PURE__*/function (_React$Component) {
+        _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_2___default()(FormValues, _React$Component);
+
+        function FormValues(props) {
+          var _this;
+
+          _this = _React$Component.call(this, props) || this;
+
+          if (!props._reduxForm) {
+            throw new Error('formValues() must be used inside a React tree decorated with reduxForm()');
+          }
+
+          _this.updateComponent(props);
+
+          return _this;
+        }
+
+        var _proto = FormValues.prototype;
+
+        _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(props) {
+          if (typeof firstArg === 'function') {
+            this.updateComponent(props);
+          }
+        };
+
+        _proto.render = function render() {
+          var Component = this.Component;
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement(Component // so that the connected component updates props when sectionPrefix has changed
+          , _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1___default()({
+            sectionPrefix: this.props._reduxForm.sectionPrefix
+          }, this.props));
+        };
+
+        _proto.updateComponent = function updateComponent(props) {
+          var valuesMap;
+          var resolvedFirstArg = typeof firstArg === 'function' ? firstArg(props) : firstArg;
+
+          if (typeof resolvedFirstArg === 'string') {
+            var _rest$reduce;
+
+            valuesMap = rest.reduce(function (result, k) {
+              result[k] = k;
+              return result;
+            }, (_rest$reduce = {}, _rest$reduce[resolvedFirstArg] = resolvedFirstArg, _rest$reduce));
+          } else {
+            valuesMap = resolvedFirstArg;
+          }
+
+          if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_5___default()(valuesMap)) {
+            // maybe that empty valuesMap is ok if firstArg is a function?
+            // if this is the case, we probably should set this.Component = Component
+            throw new Error('formValues(): You must specify values to get as formValues(name1, name2, ...) or formValues({propName1: propPath1, ...}) or formValues((props) => name) or formValues((props) => ({propName1: propPath1, ...}))');
+          }
+
+          if (lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default()(valuesMap, this._valuesMap)) {
+            // no change in valuesMap
+            return;
+          }
+
+          this._valuesMap = valuesMap;
+          this.setComponent();
+        };
+
+        _proto.setComponent = function setComponent() {
+          var _this2 = this;
+
+          var formValuesSelector = function formValuesSelector(_, _ref2) {
+            var sectionPrefix = _ref2.sectionPrefix;
+            // Yes, we're only using connect() for listening to updates.
+            // The second argument needs to be there so that connect calls
+            // the selector when props change
+            var getValues = _this2.props._reduxForm.getValues;
+            var values = getValues();
+            return lodash_mapValues__WEBPACK_IMPORTED_MODULE_3___default()(_this2._valuesMap, function (path) {
+              return getIn(values, (0,_util_prefixName__WEBPACK_IMPORTED_MODULE_8__.default)(_this2.props, path));
+            });
+          };
+
+          this.Component = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.connect)(formValuesSelector, function () {
+            return {};
+          } // ignore dispatch
+          )(function (_ref3) {
+            var sectionPrefix = _ref3.sectionPrefix,
+                otherProps = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0___default()(_ref3, ["sectionPrefix"]);
+
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6__.createElement(Component, otherProps);
+          });
+        };
+
+        return FormValues;
+      }(react__WEBPACK_IMPORTED_MODULE_6__.Component);
+
+      return (0,_ReduxFormContext__WEBPACK_IMPORTED_MODULE_9__.withReduxForm)(FormValues);
+    };
   };
 }
 
@@ -79825,6 +81925,46 @@ function createReduxForm(structure) {
 
 /***/ }),
 
+/***/ "./node_modules/redux-form/es/createValues.js":
+/*!****************************************************!*\
+  !*** ./node_modules/redux-form/es/createValues.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createValues
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+function createValues(_ref) {
+  var getIn = _ref.getIn;
+  return function (config) {
+    var _prop$getFormState$co = _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+      prop: 'values',
+      getFormState: function getFormState(state) {
+        return getIn(state, 'form');
+      }
+    }, config),
+        form = _prop$getFormState$co.form,
+        prop = _prop$getFormState$co.prop,
+        getFormState = _prop$getFormState$co.getFormState;
+
+    return (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(function (state) {
+      var _ref2;
+
+      return _ref2 = {}, _ref2[prop] = getIn(getFormState(state), form + ".values"), _ref2;
+    } // ignore dispatch
+    );
+  };
+}
+
+/***/ }),
+
 /***/ "./node_modules/redux-form/es/defaultShouldAsyncValidate.js":
 /*!******************************************************************!*\
   !*** ./node_modules/redux-form/es/defaultShouldAsyncValidate.js ***!
@@ -80213,6 +82353,44 @@ var silenceEvents = function silenceEvents(fn) {
 
 /***/ }),
 
+/***/ "./node_modules/redux-form/es/formValueSelector.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/redux-form/es/formValueSelector.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _createFormValueSelector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createFormValueSelector */ "./node_modules/redux-form/es/createFormValueSelector.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createFormValueSelector__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/formValues.js":
+/*!**************************************************!*\
+  !*** ./node_modules/redux-form/es/formValues.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _createFormValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createFormValues */ "./node_modules/redux-form/es/createFormValues.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createFormValues__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
 /***/ "./node_modules/redux-form/es/generateValidator.js":
 /*!*********************************************************!*\
   !*** ./node_modules/redux-form/es/generateValidator.js ***!
@@ -80258,6 +82436,177 @@ function generateValidator(validators, _ref) {
     return errors;
   };
 }
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormAsyncErrors.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormAsyncErrors.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormAsyncErrors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormAsyncErrors */ "./node_modules/redux-form/es/selectors/getFormAsyncErrors.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormAsyncErrors__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormError.js":
+/*!****************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormError.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormError */ "./node_modules/redux-form/es/selectors/getFormError.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormError__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormInitialValues.js":
+/*!************************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormInitialValues.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormInitialValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormInitialValues */ "./node_modules/redux-form/es/selectors/getFormInitialValues.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormInitialValues__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormMeta.js":
+/*!***************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormMeta.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormMeta__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormMeta */ "./node_modules/redux-form/es/selectors/getFormMeta.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormMeta__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormNames.js":
+/*!****************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormNames.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormNames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormNames */ "./node_modules/redux-form/es/selectors/getFormNames.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormNames__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormSubmitErrors.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormSubmitErrors.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormSubmitErrors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormSubmitErrors */ "./node_modules/redux-form/es/selectors/getFormSubmitErrors.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormSubmitErrors__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormSyncErrors.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormSyncErrors.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormSyncErrors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormSyncErrors */ "./node_modules/redux-form/es/selectors/getFormSyncErrors.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormSyncErrors__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormSyncWarnings.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormSyncWarnings.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormSyncWarnings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormSyncWarnings */ "./node_modules/redux-form/es/selectors/getFormSyncWarnings.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormSyncWarnings__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/getFormValues.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/redux-form/es/getFormValues.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_getFormValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/getFormValues */ "./node_modules/redux-form/es/selectors/getFormValues.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_getFormValues__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -80454,6 +82803,321 @@ function createHasError(_ref) {
 
 /***/ }),
 
+/***/ "./node_modules/redux-form/es/hasSubmitFailed.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/redux-form/es/hasSubmitFailed.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_hasSubmitFailed__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/hasSubmitFailed */ "./node_modules/redux-form/es/selectors/hasSubmitFailed.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_hasSubmitFailed__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/hasSubmitSucceeded.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/redux-form/es/hasSubmitSucceeded.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_hasSubmitSucceeded__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/hasSubmitSucceeded */ "./node_modules/redux-form/es/selectors/hasSubmitSucceeded.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_hasSubmitSucceeded__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/redux-form/es/index.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "actionTypes": () => /* reexport safe */ _actionTypes__WEBPACK_IMPORTED_MODULE_0__.default,
+/* harmony export */   "ReduxFormContext": () => /* reexport safe */ _ReduxFormContext__WEBPACK_IMPORTED_MODULE_1__.ReduxFormContext,
+/* harmony export */   "defaultShouldAsyncValidate": () => /* reexport safe */ _defaultShouldAsyncValidate__WEBPACK_IMPORTED_MODULE_2__.default,
+/* harmony export */   "defaultShouldValidate": () => /* reexport safe */ _defaultShouldValidate__WEBPACK_IMPORTED_MODULE_3__.default,
+/* harmony export */   "defaultShouldError": () => /* reexport safe */ _defaultShouldError__WEBPACK_IMPORTED_MODULE_4__.default,
+/* harmony export */   "defaultShouldWarn": () => /* reexport safe */ _defaultShouldWarn__WEBPACK_IMPORTED_MODULE_5__.default,
+/* harmony export */   "Form": () => /* reexport safe */ _Form__WEBPACK_IMPORTED_MODULE_6__.default,
+/* harmony export */   "FormName": () => /* reexport safe */ _FormName__WEBPACK_IMPORTED_MODULE_7__.default,
+/* harmony export */   "FormSection": () => /* reexport safe */ _FormSection__WEBPACK_IMPORTED_MODULE_8__.default,
+/* harmony export */   "SubmissionError": () => /* reexport safe */ _SubmissionError__WEBPACK_IMPORTED_MODULE_9__.SubmissionError,
+/* harmony export */   "propTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.default,
+/* harmony export */   "fieldInputPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldInputPropTypes,
+/* harmony export */   "fieldMetaPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldMetaPropTypes,
+/* harmony export */   "fieldPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldPropTypes,
+/* harmony export */   "fieldArrayFieldsPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldArrayFieldsPropTypes,
+/* harmony export */   "fieldArrayMetaPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldArrayMetaPropTypes,
+/* harmony export */   "fieldArrayPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.fieldArrayPropTypes,
+/* harmony export */   "formPropTypes": () => /* reexport safe */ _propTypes__WEBPACK_IMPORTED_MODULE_10__.formPropTypes,
+/* harmony export */   "Field": () => /* reexport safe */ _Field__WEBPACK_IMPORTED_MODULE_11__.default,
+/* harmony export */   "Fields": () => /* reexport safe */ _Fields__WEBPACK_IMPORTED_MODULE_12__.default,
+/* harmony export */   "FieldArray": () => /* reexport safe */ _FieldArray__WEBPACK_IMPORTED_MODULE_13__.default,
+/* harmony export */   "formValueSelector": () => /* reexport safe */ _formValueSelector__WEBPACK_IMPORTED_MODULE_14__.default,
+/* harmony export */   "formValues": () => /* reexport safe */ _formValues__WEBPACK_IMPORTED_MODULE_15__.default,
+/* harmony export */   "getFormError": () => /* reexport safe */ _getFormError__WEBPACK_IMPORTED_MODULE_16__.default,
+/* harmony export */   "getFormNames": () => /* reexport safe */ _getFormNames__WEBPACK_IMPORTED_MODULE_17__.default,
+/* harmony export */   "getFormValues": () => /* reexport safe */ _getFormValues__WEBPACK_IMPORTED_MODULE_18__.default,
+/* harmony export */   "getFormInitialValues": () => /* reexport safe */ _getFormInitialValues__WEBPACK_IMPORTED_MODULE_19__.default,
+/* harmony export */   "getFormSyncErrors": () => /* reexport safe */ _getFormSyncErrors__WEBPACK_IMPORTED_MODULE_20__.default,
+/* harmony export */   "getFormMeta": () => /* reexport safe */ _getFormMeta__WEBPACK_IMPORTED_MODULE_21__.default,
+/* harmony export */   "getFormAsyncErrors": () => /* reexport safe */ _getFormAsyncErrors__WEBPACK_IMPORTED_MODULE_22__.default,
+/* harmony export */   "getFormSyncWarnings": () => /* reexport safe */ _getFormSyncWarnings__WEBPACK_IMPORTED_MODULE_23__.default,
+/* harmony export */   "getFormSubmitErrors": () => /* reexport safe */ _getFormSubmitErrors__WEBPACK_IMPORTED_MODULE_24__.default,
+/* harmony export */   "isAsyncValidating": () => /* reexport safe */ _isAsyncValidating__WEBPACK_IMPORTED_MODULE_25__.default,
+/* harmony export */   "isDirty": () => /* reexport safe */ _isDirty__WEBPACK_IMPORTED_MODULE_26__.default,
+/* harmony export */   "isInvalid": () => /* reexport safe */ _isInvalid__WEBPACK_IMPORTED_MODULE_27__.default,
+/* harmony export */   "isPristine": () => /* reexport safe */ _isPristine__WEBPACK_IMPORTED_MODULE_28__.default,
+/* harmony export */   "isValid": () => /* reexport safe */ _isValid__WEBPACK_IMPORTED_MODULE_29__.default,
+/* harmony export */   "isSubmitting": () => /* reexport safe */ _isSubmitting__WEBPACK_IMPORTED_MODULE_30__.default,
+/* harmony export */   "hasSubmitSucceeded": () => /* reexport safe */ _hasSubmitSucceeded__WEBPACK_IMPORTED_MODULE_31__.default,
+/* harmony export */   "hasSubmitFailed": () => /* reexport safe */ _hasSubmitFailed__WEBPACK_IMPORTED_MODULE_32__.default,
+/* harmony export */   "reduxForm": () => /* reexport safe */ _reduxForm__WEBPACK_IMPORTED_MODULE_33__.default,
+/* harmony export */   "reducer": () => /* reexport safe */ _reducer__WEBPACK_IMPORTED_MODULE_34__.default,
+/* harmony export */   "values": () => /* reexport safe */ _values__WEBPACK_IMPORTED_MODULE_35__.default,
+/* harmony export */   "arrayInsert": () => /* binding */ arrayInsert,
+/* harmony export */   "arrayMove": () => /* binding */ arrayMove,
+/* harmony export */   "arrayPop": () => /* binding */ arrayPop,
+/* harmony export */   "arrayPush": () => /* binding */ arrayPush,
+/* harmony export */   "arrayRemove": () => /* binding */ arrayRemove,
+/* harmony export */   "arrayRemoveAll": () => /* binding */ arrayRemoveAll,
+/* harmony export */   "arrayShift": () => /* binding */ arrayShift,
+/* harmony export */   "arraySplice": () => /* binding */ arraySplice,
+/* harmony export */   "arraySwap": () => /* binding */ arraySwap,
+/* harmony export */   "arrayUnshift": () => /* binding */ arrayUnshift,
+/* harmony export */   "autofill": () => /* binding */ autofill,
+/* harmony export */   "blur": () => /* binding */ blur,
+/* harmony export */   "change": () => /* binding */ change,
+/* harmony export */   "clearAsyncError": () => /* binding */ clearAsyncError,
+/* harmony export */   "clearFields": () => /* binding */ clearFields,
+/* harmony export */   "clearSubmit": () => /* binding */ clearSubmit,
+/* harmony export */   "clearSubmitErrors": () => /* binding */ clearSubmitErrors,
+/* harmony export */   "destroy": () => /* binding */ destroy,
+/* harmony export */   "focus": () => /* binding */ focus,
+/* harmony export */   "initialize": () => /* binding */ initialize,
+/* harmony export */   "registerField": () => /* binding */ registerField,
+/* harmony export */   "reset": () => /* binding */ reset,
+/* harmony export */   "resetSection": () => /* binding */ resetSection,
+/* harmony export */   "setSubmitFailed": () => /* binding */ setSubmitFailed,
+/* harmony export */   "setSubmitSucceeded": () => /* binding */ setSubmitSucceeded,
+/* harmony export */   "startAsyncValidation": () => /* binding */ startAsyncValidation,
+/* harmony export */   "startSubmit": () => /* binding */ startSubmit,
+/* harmony export */   "stopAsyncValidation": () => /* binding */ stopAsyncValidation,
+/* harmony export */   "stopSubmit": () => /* binding */ stopSubmit,
+/* harmony export */   "submit": () => /* binding */ submit,
+/* harmony export */   "touch": () => /* binding */ touch,
+/* harmony export */   "unregisterField": () => /* binding */ unregisterField,
+/* harmony export */   "untouch": () => /* binding */ untouch,
+/* harmony export */   "updateSyncWarnings": () => /* binding */ updateSyncWarnings,
+/* harmony export */   "updateSyncErrors": () => /* binding */ updateSyncErrors
+/* harmony export */ });
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./actions */ "./node_modules/redux-form/es/actions.js");
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./node_modules/redux-form/es/actionTypes.js");
+/* harmony import */ var _ReduxFormContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReduxFormContext */ "./node_modules/redux-form/es/ReduxFormContext.js");
+/* harmony import */ var _defaultShouldAsyncValidate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaultShouldAsyncValidate */ "./node_modules/redux-form/es/defaultShouldAsyncValidate.js");
+/* harmony import */ var _defaultShouldValidate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./defaultShouldValidate */ "./node_modules/redux-form/es/defaultShouldValidate.js");
+/* harmony import */ var _defaultShouldError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./defaultShouldError */ "./node_modules/redux-form/es/defaultShouldError.js");
+/* harmony import */ var _defaultShouldWarn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./defaultShouldWarn */ "./node_modules/redux-form/es/defaultShouldWarn.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Form */ "./node_modules/redux-form/es/Form.js");
+/* harmony import */ var _FormName__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FormName */ "./node_modules/redux-form/es/FormName.js");
+/* harmony import */ var _FormSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormSection */ "./node_modules/redux-form/es/FormSection.js");
+/* harmony import */ var _SubmissionError__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./SubmissionError */ "./node_modules/redux-form/es/SubmissionError.js");
+/* harmony import */ var _propTypes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./propTypes */ "./node_modules/redux-form/es/propTypes.js");
+/* harmony import */ var _Field__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Field */ "./node_modules/redux-form/es/Field.js");
+/* harmony import */ var _Fields__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Fields */ "./node_modules/redux-form/es/Fields.js");
+/* harmony import */ var _FieldArray__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./FieldArray */ "./node_modules/redux-form/es/FieldArray.js");
+/* harmony import */ var _formValueSelector__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./formValueSelector */ "./node_modules/redux-form/es/formValueSelector.js");
+/* harmony import */ var _formValues__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./formValues */ "./node_modules/redux-form/es/formValues.js");
+/* harmony import */ var _getFormError__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./getFormError */ "./node_modules/redux-form/es/getFormError.js");
+/* harmony import */ var _getFormNames__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./getFormNames */ "./node_modules/redux-form/es/getFormNames.js");
+/* harmony import */ var _getFormValues__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./getFormValues */ "./node_modules/redux-form/es/getFormValues.js");
+/* harmony import */ var _getFormInitialValues__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./getFormInitialValues */ "./node_modules/redux-form/es/getFormInitialValues.js");
+/* harmony import */ var _getFormSyncErrors__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./getFormSyncErrors */ "./node_modules/redux-form/es/getFormSyncErrors.js");
+/* harmony import */ var _getFormMeta__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./getFormMeta */ "./node_modules/redux-form/es/getFormMeta.js");
+/* harmony import */ var _getFormAsyncErrors__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./getFormAsyncErrors */ "./node_modules/redux-form/es/getFormAsyncErrors.js");
+/* harmony import */ var _getFormSyncWarnings__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./getFormSyncWarnings */ "./node_modules/redux-form/es/getFormSyncWarnings.js");
+/* harmony import */ var _getFormSubmitErrors__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./getFormSubmitErrors */ "./node_modules/redux-form/es/getFormSubmitErrors.js");
+/* harmony import */ var _isAsyncValidating__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./isAsyncValidating */ "./node_modules/redux-form/es/isAsyncValidating.js");
+/* harmony import */ var _isDirty__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./isDirty */ "./node_modules/redux-form/es/isDirty.js");
+/* harmony import */ var _isInvalid__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./isInvalid */ "./node_modules/redux-form/es/isInvalid.js");
+/* harmony import */ var _isPristine__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./isPristine */ "./node_modules/redux-form/es/isPristine.js");
+/* harmony import */ var _isValid__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./isValid */ "./node_modules/redux-form/es/isValid.js");
+/* harmony import */ var _isSubmitting__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./isSubmitting */ "./node_modules/redux-form/es/isSubmitting.js");
+/* harmony import */ var _hasSubmitSucceeded__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./hasSubmitSucceeded */ "./node_modules/redux-form/es/hasSubmitSucceeded.js");
+/* harmony import */ var _hasSubmitFailed__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./hasSubmitFailed */ "./node_modules/redux-form/es/hasSubmitFailed.js");
+/* harmony import */ var _reduxForm__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./reduxForm */ "./node_modules/redux-form/es/reduxForm.js");
+/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./reducer */ "./node_modules/redux-form/es/reducer.js");
+/* harmony import */ var _values__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./values */ "./node_modules/redux-form/es/values.js");
+
+
+
+
+
+
+
+
+
+
+ // alias for propTypes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var arrayInsert = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayInsert;
+var arrayMove = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayMove;
+var arrayPop = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayPop;
+var arrayPush = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayPush;
+var arrayRemove = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayRemove;
+var arrayRemoveAll = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayRemoveAll;
+var arrayShift = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayShift;
+var arraySplice = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arraySplice;
+var arraySwap = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arraySwap;
+var arrayUnshift = _actions__WEBPACK_IMPORTED_MODULE_36__.default.arrayUnshift;
+var autofill = _actions__WEBPACK_IMPORTED_MODULE_36__.default.autofill;
+var blur = _actions__WEBPACK_IMPORTED_MODULE_36__.default.blur;
+var change = _actions__WEBPACK_IMPORTED_MODULE_36__.default.change;
+var clearAsyncError = _actions__WEBPACK_IMPORTED_MODULE_36__.default.clearAsyncError;
+var clearFields = _actions__WEBPACK_IMPORTED_MODULE_36__.default.clearFields;
+var clearSubmit = _actions__WEBPACK_IMPORTED_MODULE_36__.default.clearSubmit;
+var clearSubmitErrors = _actions__WEBPACK_IMPORTED_MODULE_36__.default.clearSubmitErrors;
+var destroy = _actions__WEBPACK_IMPORTED_MODULE_36__.default.destroy;
+var focus = _actions__WEBPACK_IMPORTED_MODULE_36__.default.focus;
+var initialize = _actions__WEBPACK_IMPORTED_MODULE_36__.default.initialize;
+var registerField = _actions__WEBPACK_IMPORTED_MODULE_36__.default.registerField;
+var reset = _actions__WEBPACK_IMPORTED_MODULE_36__.default.reset;
+var resetSection = _actions__WEBPACK_IMPORTED_MODULE_36__.default.resetSection;
+var setSubmitFailed = _actions__WEBPACK_IMPORTED_MODULE_36__.default.setSubmitFailed;
+var setSubmitSucceeded = _actions__WEBPACK_IMPORTED_MODULE_36__.default.setSubmitSucceeded;
+var startAsyncValidation = _actions__WEBPACK_IMPORTED_MODULE_36__.default.startAsyncValidation;
+var startSubmit = _actions__WEBPACK_IMPORTED_MODULE_36__.default.startSubmit;
+var stopAsyncValidation = _actions__WEBPACK_IMPORTED_MODULE_36__.default.stopAsyncValidation;
+var stopSubmit = _actions__WEBPACK_IMPORTED_MODULE_36__.default.stopSubmit;
+var submit = _actions__WEBPACK_IMPORTED_MODULE_36__.default.submit;
+var touch = _actions__WEBPACK_IMPORTED_MODULE_36__.default.touch;
+var unregisterField = _actions__WEBPACK_IMPORTED_MODULE_36__.default.unregisterField;
+var untouch = _actions__WEBPACK_IMPORTED_MODULE_36__.default.untouch;
+var updateSyncWarnings = _actions__WEBPACK_IMPORTED_MODULE_36__.default.updateSyncWarnings;
+var updateSyncErrors = _actions__WEBPACK_IMPORTED_MODULE_36__.default.updateSyncErrors;
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isAsyncValidating.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/redux-form/es/isAsyncValidating.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isAsyncValidating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isAsyncValidating */ "./node_modules/redux-form/es/selectors/isAsyncValidating.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isAsyncValidating__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isDirty.js":
+/*!***********************************************!*\
+  !*** ./node_modules/redux-form/es/isDirty.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isDirty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isDirty */ "./node_modules/redux-form/es/selectors/isDirty.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isDirty__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isInvalid.js":
+/*!*************************************************!*\
+  !*** ./node_modules/redux-form/es/isInvalid.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isInvalid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isInvalid */ "./node_modules/redux-form/es/selectors/isInvalid.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isInvalid__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isPristine.js":
+/*!**************************************************!*\
+  !*** ./node_modules/redux-form/es/isPristine.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isPristine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isPristine */ "./node_modules/redux-form/es/selectors/isPristine.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isPristine__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
 /***/ "./node_modules/redux-form/es/isReactNative.js":
 /*!*****************************************************!*\
   !*** ./node_modules/redux-form/es/isReactNative.js ***!
@@ -80467,6 +83131,236 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var isReactNative = typeof window !== 'undefined' && window.navigator && window.navigator.product && window.navigator.product === 'ReactNative';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isReactNative);
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isSubmitting.js":
+/*!****************************************************!*\
+  !*** ./node_modules/redux-form/es/isSubmitting.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isSubmitting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isSubmitting */ "./node_modules/redux-form/es/selectors/isSubmitting.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isSubmitting__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/isValid.js":
+/*!***********************************************!*\
+  !*** ./node_modules/redux-form/es/isValid.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _selectors_isValid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors/isValid */ "./node_modules/redux-form/es/selectors/isValid.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_selectors_isValid__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/propTypes.js":
+/*!*************************************************!*\
+  !*** ./node_modules/redux-form/es/propTypes.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "formPropTypes": () => /* binding */ formPropTypes,
+/* harmony export */   "fieldInputPropTypes": () => /* binding */ fieldInputPropTypes,
+/* harmony export */   "fieldMetaPropTypes": () => /* binding */ fieldMetaPropTypes,
+/* harmony export */   "fieldArrayMetaPropTypes": () => /* binding */ fieldArrayMetaPropTypes,
+/* harmony export */   "fieldArrayFieldsPropTypes": () => /* binding */ fieldArrayFieldsPropTypes,
+/* harmony export */   "fieldPropTypes": () => /* binding */ fieldPropTypes,
+/* harmony export */   "fieldArrayPropTypes": () => /* binding */ fieldArrayPropTypes,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+var any = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().any),
+    bool = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().bool),
+    func = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().func),
+    shape = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().shape),
+    string = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
+    oneOfType = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType),
+    object = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().object),
+    number = (prop_types__WEBPACK_IMPORTED_MODULE_0___default().number);
+var formPropTypes = {
+  // State:
+  anyTouched: bool.isRequired,
+  // true if any of the fields have been marked as touched
+  asyncValidating: oneOfType([bool, string]).isRequired,
+  // true if async validation is running, a string if a field triggered async validation
+  dirty: bool.isRequired,
+  // true if any values are different from initialValues
+  error: any,
+  // form-wide error from '_error' key in validation result
+  form: string.isRequired,
+  // the name of the form
+  invalid: bool.isRequired,
+  // true if there are any validation errors
+  initialized: bool.isRequired,
+  // true if the form has been initialized
+  initialValues: object,
+  // the initialValues object passed to reduxForm
+  pristine: bool.isRequired,
+  // true if the values are the same as initialValues
+  pure: bool.isRequired,
+  // if true, implements shouldComponentUpdate
+  submitting: bool.isRequired,
+  // true if the form is in the process of being submitted
+  submitAsSideEffect: bool.isRequired,
+  // true if onSubmit result will be dispatched
+  submitFailed: bool.isRequired,
+  // true if the form was submitted and failed for any reason
+  submitSucceeded: bool.isRequired,
+  // true if the form was successfully submitted
+  valid: bool.isRequired,
+  // true if there are no validation errors
+  warning: any,
+  // form-wide warning from '_warning' key in validation result
+  // Actions:
+  array: shape({
+    insert: func.isRequired,
+    // function to insert a value into an array field
+    move: func.isRequired,
+    // function to move a value within an array field
+    pop: func.isRequired,
+    // function to pop a value off of an array field
+    push: func.isRequired,
+    // function to push a value onto an array field
+    remove: func.isRequired,
+    // function to remove a value from an array field
+    removeAll: func.isRequired,
+    // function to remove all the values from an array field
+    shift: func.isRequired,
+    // function to shift a value out of an array field
+    splice: func.isRequired,
+    // function to splice a value into an array field
+    swap: func.isRequired,
+    // function to swap values in an array field
+    unshift: func.isRequired // function to unshift a value into an array field
+
+  }),
+  asyncValidate: func.isRequired,
+  // function to trigger async validation
+  autofill: func.isRequired,
+  // action to set a value of a field and mark it as autofilled
+  blur: func.isRequired,
+  // action to mark a field as blurred
+  change: func.isRequired,
+  // action to change the value of a field
+  clearAsyncError: func.isRequired,
+  // action to clear the async error of a field
+  clearFields: func.isRequired,
+  // action to clean fields values for all fields
+  clearSubmitErrors: func.isRequired,
+  // action to remove submitErrors and error
+  destroy: func.isRequired,
+  // action to destroy the form's data in Redux
+  dispatch: func.isRequired,
+  // the Redux dispatch action
+  handleSubmit: func.isRequired,
+  // function to submit the form
+  initialize: func.isRequired,
+  // action to initialize form data
+  reset: func.isRequired,
+  // action to reset the form data to previously initialized values
+  resetSection: func.isRequired,
+  // action to reset the form sections data to previously initialized values
+  touch: func.isRequired,
+  // action to mark fields as touched
+  submit: func.isRequired,
+  // action to trigger a submission of the specified form
+  untouch: func.isRequired,
+  // action to mark fields as untouched
+  // triggerSubmit
+  triggerSubmit: bool,
+  // if true, submits the form on componentWillReceiveProps
+  clearSubmit: func.isRequired // called before a triggered submit, by default clears triggerSubmit
+
+};
+var fieldInputPropTypes = {
+  checked: bool,
+  name: string.isRequired,
+  onBlur: func.isRequired,
+  onChange: func.isRequired,
+  onDragStart: func.isRequired,
+  onDrop: func.isRequired,
+  onFocus: func.isRequired,
+  value: any
+};
+var fieldMetaPropTypes = {
+  active: bool.isRequired,
+  asyncValidating: bool.isRequired,
+  autofilled: bool.isRequired,
+  dirty: bool.isRequired,
+  dispatch: func.isRequired,
+  error: any,
+  form: string.isRequired,
+  invalid: bool.isRequired,
+  pristine: bool.isRequired,
+  submitting: bool.isRequired,
+  submitFailed: bool.isRequired,
+  touched: bool.isRequired,
+  valid: bool.isRequired,
+  visited: bool.isRequired,
+  warning: string
+};
+var fieldArrayMetaPropTypes = {
+  dirty: bool.isRequired,
+  error: any,
+  form: string.isRequired,
+  invalid: bool.isRequired,
+  pristine: bool.isRequired,
+  submitFailed: bool,
+  submitting: bool,
+  valid: bool.isRequired,
+  warning: string
+};
+var fieldArrayFieldsPropTypes = {
+  name: string.isRequired,
+  forEach: func.isRequired,
+  get: func.isRequired,
+  getAll: func.isRequired,
+  insert: func.isRequired,
+  length: number.isRequired,
+  map: func.isRequired,
+  move: func.isRequired,
+  pop: func.isRequired,
+  push: func.isRequired,
+  reduce: func.isRequired,
+  remove: func.isRequired,
+  removeAll: func.isRequired,
+  shift: func.isRequired,
+  swap: func.isRequired,
+  unshift: func.isRequired
+};
+var fieldPropTypes = {
+  input: shape(fieldInputPropTypes).isRequired,
+  meta: shape(fieldMetaPropTypes).isRequired
+};
+var fieldArrayPropTypes = {
+  fields: shape(fieldArrayFieldsPropTypes).isRequired,
+  meta: shape(fieldArrayMetaPropTypes).isRequired
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formPropTypes);
 
 /***/ }),
 
@@ -80505,6 +83399,445 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createReduxForm__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormAsyncErrors.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormAsyncErrors.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormAsyncErrors
+/* harmony export */ });
+function createGetFormAsyncErrors(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".asyncErrors");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormError.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormError.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormError
+/* harmony export */ });
+function createGetFormError(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".error");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormInitialValues.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormInitialValues.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormInitialValues
+/* harmony export */ });
+function createGetFormInitialValues(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".initial");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormMeta.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormMeta.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormMeta
+/* harmony export */ });
+function createGetFormMeta(_ref) {
+  var getIn = _ref.getIn,
+      empty = _ref.empty;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".fields") || empty;
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormNames.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormNames.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormNames
+/* harmony export */ });
+function createGetFormNames(_ref) {
+  var getIn = _ref.getIn,
+      keys = _ref.keys;
+  return function (getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return keys(nonNullGetFormState(state));
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormSubmitErrors.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormSubmitErrors.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormSubmitErrors
+/* harmony export */ });
+function createGetFormSubmitErrors(_ref) {
+  var getIn = _ref.getIn,
+      empty = _ref.empty;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".submitErrors") || empty;
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormSyncErrors.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormSyncErrors.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormSyncErrors
+/* harmony export */ });
+function createGetFormSyncErrors(_ref) {
+  var getIn = _ref.getIn,
+      empty = _ref.empty;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".syncErrors") || empty;
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormSyncWarnings.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormSyncWarnings.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormSyncWarnings
+/* harmony export */ });
+function createGetFormSyncWarnings(_ref) {
+  var getIn = _ref.getIn,
+      empty = _ref.empty;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".syncWarnings") || empty;
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/getFormValues.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/getFormValues.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createGetFormValues
+/* harmony export */ });
+function createGetFormValues(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return getIn(nonNullGetFormState(state), form + ".values");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/hasSubmitFailed.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/hasSubmitFailed.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createHasSubmitFailed
+/* harmony export */ });
+function createHasSubmitFailed(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return !!getIn(nonNullGetFormState(state), form + ".submitFailed");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/hasSubmitSucceeded.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/hasSubmitSucceeded.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createHasSubmitSucceeded
+/* harmony export */ });
+function createHasSubmitSucceeded(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return !!getIn(nonNullGetFormState(state), form + ".submitSucceeded");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/isAsyncValidating.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/isAsyncValidating.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createIsAsyncValidating
+/* harmony export */ });
+function createIsAsyncValidating(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return !!getIn(nonNullGetFormState(state), form + ".asyncValidating");
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/isDirty.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/isDirty.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createIsDirty
+/* harmony export */ });
+/* harmony import */ var _isPristine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isPristine */ "./node_modules/redux-form/es/selectors/isPristine.js");
+
+function createIsDirty(structure) {
+  return function (form, getFormState) {
+    var isPristine = (0,_isPristine__WEBPACK_IMPORTED_MODULE_0__.default)(structure)(form, getFormState);
+    return function (state) {
+      for (var _len = arguments.length, fields = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        fields[_key - 1] = arguments[_key];
+      }
+
+      return !isPristine.apply(void 0, [state].concat(fields));
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/isInvalid.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/isInvalid.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createIsInvalid
+/* harmony export */ });
+/* harmony import */ var _isValid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isValid */ "./node_modules/redux-form/es/selectors/isValid.js");
+
+function createIsInvalid(structure) {
+  return function (form, getFormState) {
+    var isValid = (0,_isValid__WEBPACK_IMPORTED_MODULE_0__.default)(structure)(form, getFormState);
+    return function (state) {
+      return !isValid(state);
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/isPristine.js":
+/*!************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/isPristine.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createIsPristine
+/* harmony export */ });
+function createIsPristine(_ref) {
+  var deepEqual = _ref.deepEqual,
+      empty = _ref.empty,
+      getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      var formState = nonNullGetFormState(state);
+
+      for (var _len = arguments.length, fields = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        fields[_key - 1] = arguments[_key];
+      }
+
+      if (fields && fields.length) {
+        return fields.every(function (field) {
+          var fieldInitial = getIn(formState, form + ".initial." + field);
+          var fieldValue = getIn(formState, form + ".values." + field);
+          return deepEqual(fieldInitial, fieldValue);
+        });
+      }
+
+      var initial = getIn(formState, form + ".initial") || empty;
+      var values = getIn(formState, form + ".values") || initial;
+      return deepEqual(initial, values);
+    };
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/selectors/isSubmitting.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/redux-form/es/selectors/isSubmitting.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ createIsSubmitting
+/* harmony export */ });
+function createIsSubmitting(_ref) {
+  var getIn = _ref.getIn;
+  return function (form, getFormState) {
+    return function (state) {
+      var nonNullGetFormState = getFormState || function (state) {
+        return getIn(state, 'form');
+      };
+
+      return !!getIn(nonNullGetFormState(state), form + ".submitting");
+    };
+  };
+}
 
 /***/ }),
 
@@ -81101,6 +84434,25 @@ var validateComponentProp = function validateComponentProp(props, propName, comp
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validateComponentProp);
+
+/***/ }),
+
+/***/ "./node_modules/redux-form/es/values.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-form/es/values.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _createValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createValues */ "./node_modules/redux-form/es/createValues.js");
+/* harmony import */ var _structure_plain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./structure/plain */ "./node_modules/redux-form/es/structure/plain/index.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_createValues__WEBPACK_IMPORTED_MODULE_0__.default)(_structure_plain__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 

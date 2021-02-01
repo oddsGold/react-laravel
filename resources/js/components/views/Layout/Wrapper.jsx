@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Header from "../sections/header/Header";
 import SidebarContainer from "../sections/sidebar/SidebarContainer";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {initializedSuccessApp} from "../../reducers/app-reducer";
+import {withAuthRedirect} from "../../Helpers/Hoc/WithAuthRedirect";
 
 function getWindowDimensions() {
     const height = window;

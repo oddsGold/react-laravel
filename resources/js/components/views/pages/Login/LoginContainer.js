@@ -6,31 +6,23 @@ import {login} from "../../../reducers/auth-reducer";
 
 function LoginContainer(props) {
     const onSubmit = (formData) => {
-        const data = {
-            email:formData.email,
-            password:formData.password
-        }
-        console.log(data)
-        props.login(data);
+        props.login(formData.email, formData.password);
     }
-
 
     return (
         <LoginPage onSubmit={onSubmit}/>
     )
 }
 
-// export default LoginContainer;
-
-// let mapStateToProps = (state) => {
-//     return {
-//         isAuth: state.auth.isAuth,
-//     }
-// }
+let mapStateToProps = (state) => {
+    return {
+        loggedIn: state.auth.loggedIn
+    }
+}
 
 export default compose(
-    connect(null,
+    connect(mapStateToProps,
         {
-            login
+            login,
         })
 )(LoginContainer);

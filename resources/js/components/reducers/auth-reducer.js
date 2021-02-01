@@ -1,67 +1,77 @@
-// import {usersAPI} from "../api/Api";
 import {stopSubmit} from "redux-form";
 import {authApi} from "../api/Api";
+import cookie from 'js-cookie';
 
 const SET_USER_DATA = 'SET-USER-DATA';
-const SET_CURRENT_USER_IMG = 'SET-CURRENT-USER-IMG';
+const SET_NEW_USER = 'SET_NEW_USER';
 
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
-    isAuth: false, //не залогинен -> true - залогинен
+    auth: {
+        loggedIn: false,
+        user: {}
+    },
+    // id: null,
+    // email: null,
+    // name: null,
+    // isAuth: false, //не залогинен -> true - залогинен
+    newRegistration: false //redirect после регистрации нового пользователя
 }
-
-function setUserData(state, data) {
-    return {
-        ...state,
-        ...data
-    }
-}
-
-function setCurrentUser(state, userImg) {
-    return {
-        ...state,
-        currentUserImg: userImg
-    }
-}
-
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
-            return setUserData(state, action.data);
-        case SET_CURRENT_USER_IMG:
-            return setCurrentUser(state, action.userImg)
+            return {
+                ...state,
+                loggedIn: true,
+                user: action.payload
+            }
+        case SET_NEW_USER:
+            return {
+                ...state,
+                newRegistration: action.newRegistration
+            }
         default:
             return state;
     }
 }
 
-export const setUserDataAC = (userId, email, login, isAuth) => {
+export const setUserDataAC = (user) => {
     return {
         type: SET_USER_DATA,
-        data: {userId, email, login, isAuth}
+        payload: user
+    }
+}
+export const setNewUserAC = (newRegistration) => {
+    return {
+        type: SET_NEW_USER,
+        newRegistration: newRegistration
     }
 }
 
 export const getCurrentUserTC = () => {
-    return (dispatch) => {
-        return usersAPI.currentUser()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    let {id, email, login} = data.data; //деструктеризация
-                    dispatch(setUserDataAC(id, email, login, true));
-                }
-            })
+    return async (dispatch) => {
+        const token = cookie.get("token");
+        let data = await authApi.getUser(token);
+
+        dispatch(setUserDataAC(data.data.user));
     }
 } //Thunk
 
 
-export const login = (data) => {
+export const login = (email, password) => {
     return async (dispatch) => {
-        let data = await authApi.authLogin(data);
+        let data = await authApi.authLogin(email, password);
+
+        if (data.errors) {
+            dispatch(stopSubmit("login", {_error: data.errors}));
+        } else {
+            let date = new Date();
+            date.setTime(date.getTime() + (180 * 60 * 1000)); //минуты - секунды - милисекунды
+            cookie.set("token", data.data.access_token, {expires: date});
+
+            dispatch(getCurrentUserTC())
+        }
 
         // if (data.resultCode === 0) {
         //     dispatch(getCurrentUserTC())
@@ -70,6 +80,20 @@ export const login = (data) => {
         // }
 
 
+    }
+}
+
+export const register = (name, email, password, password_conformation) => {
+    return async (dispatch) => {
+        const registerData = {name, email, password, password_conformation};
+
+        let data = await authApi.authRegister(registerData);
+
+        if (data.errors) {
+            dispatch(stopSubmit("register", {_error: data.errors}));
+        } else {
+            dispatch(setNewUserAC(true))
+        }
     }
 }
 

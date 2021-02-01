@@ -3,11 +3,13 @@ import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from 'redux-form';
 import appReducer from "./app-reducer";
 import navbarReducer from "./navbar-reducer";
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
     navbar: navbarReducer,
     app: appReducer,
-    form: formReducer
+    form: formReducer,
+    auth: authReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
