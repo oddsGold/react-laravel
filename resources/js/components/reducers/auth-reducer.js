@@ -11,10 +11,6 @@ let initialState = {
         loggedIn: false,
         user: {}
     },
-    // id: null,
-    // email: null,
-    // name: null,
-    // isAuth: false, //не залогинен -> true - залогинен
     newRegistration: false //redirect после регистрации нового пользователя
 }
 
@@ -72,14 +68,6 @@ export const login = (email, password) => {
 
             dispatch(getCurrentUserTC())
         }
-
-        // if (data.resultCode === 0) {
-        //     dispatch(getCurrentUserTC())
-        // } else {
-        //     dispatch(stopSubmit("login", {_error: data.messages[0]}));
-        // }
-
-
     }
 }
 

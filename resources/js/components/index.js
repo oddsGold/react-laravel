@@ -7,9 +7,25 @@ import App from "./App";
 import cookie from "js-cookie";
 import {authApi} from "./api/Api";
 import {setUserDataAC} from "./reducers/auth-reducer";
+import jwt from "jsonwebtoken";
 
+const jwt_secret = "6GbR4fcmz7YRwEwfgugATC16jf1qxhYi4LuuqeWQ7bi7P9fRPycU2PSBug95uKg8";
+let token = cookie.get("token");
 
-const token = cookie.get("token");
+if(token) {
+    jwt.verify(token, jwt_secret, function(err, decoded) {
+        if (err) {
+            cookie.remove("token");
+            token=null;
+        }else {
+            if(decoded.iss !== 'http://react.local/api/auth/login'){
+                cookie.remove("token");
+                token=null;
+            }
+        }
+        console.log(decoded);
+    });
+}
 
 function render() {
     ReactDOM.render(
