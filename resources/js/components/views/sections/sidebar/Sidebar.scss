@@ -30,14 +30,16 @@
     margin: 0;
     padding: 0;
 }
-.skin-blue .sidebar-menu>li>span {
+.skin-blue .sidebar-menu>li>span,
+.skin-blue .sidebar-menu>li>a {
     border-left: 3px solid transparent;
     color: #ffffff;
     cursor: pointer;
 }
 .skin-blue .sidebar-menu>li.active>span,
 .skin-blue .sidebar-menu>li.menu-open>span,
-.skin-blue .sidebar-menu>li:hover>span{
+.skin-blue .sidebar-menu>li:hover>span,
+.skin-blue .sidebar-menu>li:hover>a{
     color: #fff;
     background: #1e282c;
 }

@@ -4,6 +4,7 @@ import cookie from 'js-cookie';
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_NEW_USER = 'SET_NEW_USER';
+const SET_LOGOUT_USER = 'SET_LOGOUT_USER';
 
 
 let initialState = {
@@ -11,7 +12,7 @@ let initialState = {
         loggedIn: false,
         user: {}
     },
-    newRegistration: false //redirect после регистрации нового пользователя
+    newRegistration: false //метка для redirect(а) нового пользователя после регистрации
 }
 
 const authReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 loggedIn: true,
                 user: action.payload
+            }
+        case SET_LOGOUT_USER:
+            return {
+                ...state,
+                loggedIn: false,
+                user: {}
             }
         case SET_NEW_USER:
             return {
@@ -37,22 +44,31 @@ export const setUserDataAC = (user) => {
         type: SET_USER_DATA,
         payload: user
     }
-}
+} //login user
+export const setLogoutUser = () => {
+    return {
+        type: SET_LOGOUT_USER
+    }
+} //logout user
 export const setNewUserAC = (newRegistration) => {
     return {
         type: SET_NEW_USER,
         newRegistration: newRegistration
     }
-}
+} //create new user
 
 export const getCurrentUserTC = () => {
     return async (dispatch) => {
         const token = cookie.get("token");
-        let data = await authApi.getUser(token);
+        let response = await authApi.getUser(token);
 
-        dispatch(setUserDataAC(data.data.user));
+        if (response.errors) {
+            dispatch(stopSubmit("login"));
+        }else {
+            dispatch(setUserDataAC(response.data));
+        }
     }
-} //Thunk
+}
 
 
 export const login = (email, password) => {
@@ -64,16 +80,23 @@ export const login = (email, password) => {
         } else {
             let date = new Date();
             date.setTime(date.getTime() + (180 * 60 * 1000)); //минуты - секунды - милисекунды
-            cookie.set("token", data.data.access_token, {expires: date});
+            cookie.set("token", data.access_token, {expires: date});
 
             dispatch(getCurrentUserTC())
         }
     }
-}
+} //login user
 
-export const register = (name, email, password, password_conformation) => {
+export const logout = () => {
+    return (dispatch) => {
+        cookie.remove("token");
+        dispatch(setLogoutUser());
+    }
+} //logout user
+
+export const register = (name, email, password, password_confirmation) => {
     return async (dispatch) => {
-        const registerData = {name, email, password, password_conformation};
+        const registerData = {name, email, password, password_confirmation};
 
         let data = await authApi.authRegister(registerData);
 
@@ -83,6 +106,6 @@ export const register = (name, email, password, password_conformation) => {
             dispatch(setNewUserAC(true))
         }
     }
-}
+} //create new user & redirect to login page
 
 export default authReducer;

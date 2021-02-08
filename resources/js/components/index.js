@@ -23,7 +23,6 @@ if(token) {
                 token=null;
             }
         }
-        console.log(decoded);
     });
 }
 

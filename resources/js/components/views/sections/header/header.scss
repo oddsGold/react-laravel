@@ -24,12 +24,12 @@
     display: none;
 }
 .skin-blue .main-header .logo {
-    background-color: #367fa9;
+    background-color: #3c8dbc;
     color: #fff;
     border-bottom: 0 solid transparent;
 }
 .skin-blue .main-header .navbar {
-    background-color: #367fa9;
+    background-color: #3c8dbc;
 }
 .main-header .navbar {
     -webkit-transition: margin-left .3s ease-in-out;
@@ -51,4 +51,50 @@
     background-color: transparent;
     background-image: none;
     padding: 15px;
+}
+.main-header {
+    .navbar-custom-menu {
+        .nav {
+            .dropdown {
+                margin-right: 15px;
+                .dropdown-menu {
+                    background-color: #367fa9;
+                    width: 280px;
+                    .user-header {
+                        text-align: center;
+                        color: #fff;
+                        height: 175px;
+                        padding: 10px;
+                        img {
+                            height: 90px;
+                            width: 90px;
+                        }
+                        p {
+                            font-size: 17px;
+                            margin-top: 10px;
+                            small {
+                                display: block;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    .user-footer {
+                        background-color: #f9f9f9;
+                        padding: 10px;
+                    }
+                }
+                .user-image {
+                    float: left;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    margin-top: -2px;
+                }
+            }
+            .dropdown.open {
+                background-color: #367fa9;
+            }
+        }
+    }
 }

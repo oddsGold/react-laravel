@@ -16,4 +16,5 @@ Route::any('/admin/{path?}', 'App\Http\Controllers\ProductsController@index')->w
 
 Route::prefix('api')->group(function() {
     Route::get('getMenus', 'App\Http\Controllers\MenusController@index');
+    Route::get('getUsers/list', [\App\Http\Controllers\UsersController::class, 'index']);
 });

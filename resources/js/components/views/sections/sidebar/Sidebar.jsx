@@ -9,12 +9,18 @@ function Sidebar(props) {
                     {
                         props.menuItems.map(item => {
                             if (item.child.length <= 0)
-                                return <li key={item.id}>
-                                    <span>{item.title}</span>
-                                </li>
+                                if (item.url !== null)
+                                    return <li key={item.id}>
+                                        <NavLink to={item.url}>{item.title}</NavLink>
+                                    </li>
+                                else
+                                    return <li key={item.id}>
+                                        <span>{item.title}</span>
+                                    </li>
                             else
-                                return  <li className="dropdown" key={item.id}>
-                                    <span className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{item.title}</span>
+                                return <li className="dropdown" key={item.id}>
+                                    <span className="dropdown-toggle" data-toggle="dropdown"
+                                          aria-expanded="true">{item.title}</span>
                                     {item.child.map((childItem, index) => {
                                         return <ul className="custom-dropdown-menu" key={index}>
                                             <li>

@@ -1,9 +1,13 @@
 import React from 'react';
 import './header.scss';
 import HeaderNavigation from "./HeaderNavigation";
+import {connect} from "react-redux";
+import {logout} from "../../../reducers/auth-reducer";
 
 
 function Header(props) {
+
+
     return (
         <header className="main-header">
             <a href="#" className='logo'>
@@ -14,8 +18,17 @@ function Header(props) {
                     Gold
                 </span>
             </a>
-            <HeaderNavigation />
+            <HeaderNavigation user={props.user} logout={props.logout} />
         </header>
     );
 }
-export default Header;
+
+let mapStateToProps = (state) => {
+    return{
+        user: state.auth.user
+    }
+}
+
+export default connect(mapStateToProps, {
+    logout
+})(Header);

@@ -17,7 +17,7 @@ export const authApi = {
     authLogin(email, password) {
         return instance.post('auth/login', {email, password})
             .then(response => {
-                return response
+                return response.data
             })
             .catch(response => {
                 return {errors: response.response.data}
@@ -39,6 +39,18 @@ export const authApi = {
         })
             .then(response => {
                 return response
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
+    }
+}
+
+export const usersApi = {
+    getUsers(pageNumber){
+        return instance.get(`getUsers/list?page=${pageNumber}`)
+            .then(response => {
+                return response.data
             })
     }
 }

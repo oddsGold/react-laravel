@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form'
 import {Input} from "../../../Helpers/FormsControls/Forms";
 import {required} from "../../../Helpers/Validation/validation";
 
-function LoginPageForm({handleSubmit, error}) {
+function LoginPageForm({handleSubmit, error, valid}) {
     return (
         <div className="login-form">
             <form onSubmit={handleSubmit} className="log-in">
@@ -21,10 +21,10 @@ function LoginPageForm({handleSubmit, error}) {
                 </div>
                 <div className="floating-label">
                     <label htmlFor="password">Password:</label>
-                    <Field type="text" placeholder={"Password"} name={"password"} component={Input} validate={[required]} />
+                    <Field type="password" placeholder={"Password"} name={"password"} component={Input} validate={[required]} />
                 </div>
                 <div>
-                    <button>Login</button>
+                    <button disabled={!valid} type="submit">Login</button>
                 </div>
             </form>
         </div>

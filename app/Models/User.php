@@ -21,6 +21,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'avatar_img',
+        'created_at'
     ];
 
     /**
@@ -55,5 +57,26 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+//    public static function getUsers($users){
+//        $usersArray = array();
+//        foreach($users as $key => $user){
+//            array_push($usersArray, array(
+//                'id' => $user->id,
+//                'email'  => $user->email,
+//                'avatar_img'  => $user->avatar_img,
+//                'created_at'  => $user->created_at,
+//            ));
+//        }
+//
+//        return $usersArray;
+//
+//    }
+
+    public static function usersToArray(){
+//        $users = self::getUsers(User::query()->orderByDesc('id')->paginate(1));
+        $users = User::query()->orderByDesc('id')->paginate(1);
+        return response($users, 200);
     }
 }

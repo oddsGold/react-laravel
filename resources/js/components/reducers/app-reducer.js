@@ -29,6 +29,7 @@ export const initializedSuccess = () => {
 export const initializedSuccessApp = () => {
     return (dispatch) => {
         dispatch(initializedSuccess());
+        dispatch(getCurrentUserTC());
         // let promise = dispatch(getCurrentUserTC());
         //
         // promise.then(() => {

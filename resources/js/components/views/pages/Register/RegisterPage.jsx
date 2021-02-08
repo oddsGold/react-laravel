@@ -1,5 +1,4 @@
 import React from "react";
-import Wrapper from "../../Layout/Wrapper";
 import RegisterPageReduxForm from "./RegisterPageForm";
 
 function RegisterPage(props) {

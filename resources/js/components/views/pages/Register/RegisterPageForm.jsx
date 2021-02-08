@@ -1,7 +1,9 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form'
 import {Input} from "../../../Helpers/FormsControls/Forms";
-import {required} from "../../../Helpers/Validation/validation";
+import {minLength, passwordsMustMatch, required} from "../../../Helpers/Validation/validation";
+
+const minLenghtPass = minLength(6);
 
 function RegisterPageForm({handleSubmit, error}){
     return(
@@ -25,11 +27,11 @@ function RegisterPageForm({handleSubmit, error}){
                 </div>
                 <div className="floating-label">
                     <label htmlFor="password">Password:</label>
-                    <Field type="password" placeholder={"Password"} name={"password"} component={Input} validate={[required]}/>
+                    <Field type="password" placeholder={"Password"} name={"password"} component={Input} validate={[required, passwordsMustMatch, minLenghtPass]}/>
                 </div>
                 <div className="floating-label">
                     <label htmlFor="password_conformation">Conform Your Password:</label>
-                    <Field type="password" placeholder={"Conform Your Password"} name={"password_conformation"} component={Input} validate={[required]}/>
+                    <Field type="password" placeholder={"Conform Your Password"} name={"password_confirmation"} component={Input} validate={[required]}/>
                 </div>
                 <div>
                     <button>Register</button>
@@ -40,7 +42,8 @@ function RegisterPageForm({handleSubmit, error}){
 }
 
 const RegisterPageReduxForm = reduxForm({
-    form: 'register'
+    form: 'register',
+    touchOnBlur: false
 })(RegisterPageForm)
 
 export default RegisterPageReduxForm;

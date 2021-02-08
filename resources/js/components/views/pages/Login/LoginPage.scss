@@ -98,6 +98,11 @@ $primary: rgb(182,157,230);
                 }
             }
         }
+        button:disabled,
+        button[disabled]{
+            background-color: #cccccc;
+            color: #666666;
+        }
         input {
             font-size:  16px;
             padding:  20px 0;

@@ -7,8 +7,8 @@ import {Redirect} from "react-router-dom";
 
 function RegisterContainer(props) {
     const onSubmit = (formData) => {
-        const {name, email, password, password_conformation} = formData;
-        props.register(name, email, password, password_conformation);
+        const {name, email, password, password_confirmation} = formData;
+        props.register(name, email, password, password_confirmation);
     }
 
     if (props.newRegistration) {
