@@ -11,4 +11,8 @@ class UsersController extends Controller
     {
         return User::usersToArray();
     }
+
+    public function profile($id){
+        return User::userProfile($id);
+    }
 }

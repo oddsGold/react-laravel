@@ -1,11 +1,15 @@
 import React from "react";
 import Pagination from "react-js-pagination";
+import UsersList from "./UsersList";
 
 function UsersPage(props) {
 
     return (
         <div className="users-page">
-            <h1>Пользователи</h1>
+
+            <UsersList
+                usersList={props.usersList}
+            />
 
             <Pagination
                 activePage={props.activePage}
@@ -15,17 +19,6 @@ function UsersPage(props) {
                 itemClass="page-item"
                 linkClass="page-link"
             />
-
-
-            {
-                props.usersList.map((user, i) => {
-                    return <div key={user.id}>
-                        <p>{user.id}</p>
-                        <p>{user.name}</p>
-                        <p>{user.email}</p>
-                    </div>
-                })
-            }
         </div>
     )
 }

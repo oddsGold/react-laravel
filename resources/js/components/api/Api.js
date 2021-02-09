@@ -52,5 +52,12 @@ export const usersApi = {
             .then(response => {
                 return response.data
             })
+    },
+
+    getUserProfile(id){
+        return instance.get(`user/profile/`+id)
+            .then(response => {
+                return response.data
+            })
     }
 }

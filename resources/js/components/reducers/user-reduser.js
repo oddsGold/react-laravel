@@ -4,12 +4,14 @@ const GET_USERS = 'GET_USERS';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const SET_USERS_COUNT = 'SET-USERS-COUNT';
 const PER_PAGE = 'PER_PAGE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
     usersList: [],
     totalUsersCount: 0,
     perPage: 0,
-    isFetching: false
+    isFetching: false,
+    userProfile: null,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: action.isFetching
+            }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                userProfile: action.profile
             }
         default:
             return {
@@ -69,6 +76,13 @@ export const perPageAC = (perPage) => {
     }
 }
 
+export const setUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile: profile
+    }
+}
+
 export const getUsersTC = (pageNumber) => {
     return async (dispatch) => {
 
@@ -80,5 +94,13 @@ export const getUsersTC = (pageNumber) => {
         dispatch(perPageAC(data.per_page));
     }
 }
+
+export const userProfileTC = (id) => {
+    return async (dispatch) => {
+        let data = await usersApi.getUserProfile(id);
+
+        dispatch(setUserProfile(data))
+    }
+} //Thunk Creator
 
 export default usersReducer;

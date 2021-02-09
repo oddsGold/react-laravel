@@ -76,7 +76,11 @@ class User extends Authenticatable implements JWTSubject
 
     public static function usersToArray(){
 //        $users = self::getUsers(User::query()->orderByDesc('id')->paginate(1));
-        $users = User::query()->orderByDesc('id')->paginate(1);
+        $users = User::query()->orderByDesc('id')->paginate(2);
         return response($users, 200);
+    }
+
+    public static function userProfile($id){
+        return User::query()->select('id', 'name', 'email', 'created_at')->where('id',  $id)->get();
     }
 }

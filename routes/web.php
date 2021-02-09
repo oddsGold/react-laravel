@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::any('/admin/{path?}', 'App\Http\Controllers\ProductsController@index')->where('admin', '(.*)?');
+Route::any('/admin/{path?}', 'App\Http\Controllers\ProductsController@index')->where('path', '(.*)?');
 
 Route::prefix('api')->group(function() {
     Route::get('getMenus', 'App\Http\Controllers\MenusController@index');
     Route::get('getUsers/list', [\App\Http\Controllers\UsersController::class, 'index']);
+    Route::get('user/profile/{id}', [\App\Http\Controllers\UsersController::class, 'profile']);
 });

@@ -1,0 +1,30 @@
+.users-page {
+    .users-list {
+        .users-list-table {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            .users-list-table-header {
+                background: #356a97;
+                border-color: #33597b;
+                color: #fff;
+                padding: 10px;
+            }
+            .users-list-table-body {
+                .users-list-table-body-row {
+                    padding: 10px;
+                    a {
+                        color: rgb(60, 141, 188);
+                        font-size: 16px;
+                    }
+                }
+            }
+            .users-list-table-body {
+                .users-list-table-body-row:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {initializedSuccessApp} from "../../reducers/app-reducer";
 import {withAuthRedirect} from "../../Helpers/Hoc/WithAuthRedirect";
+import ContentHeader from "../sections/pagesHeader/ContentHeader";
 
 function getWindowDimensions() {
     const height = window;
@@ -48,12 +49,6 @@ function Wrapper(props) {
                         <li className="active">Contacts</li>
                         <li className="active">Contacts</li>
                     </ol>
-                </div> {/*create component*/}
-
-                <div className="content-header">
-                    <h1>
-                        Contacts
-                    </h1>
                 </div> {/*create component*/}
 
                 <div className="content">

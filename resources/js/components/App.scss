@@ -40,8 +40,21 @@ a:focus {
     margin-left: 230px;
     z-index: 820;
 }
+.content-wrapper .content-header {
+    padding-bottom: 20px;
+}
+.content-wrapper .content-header h1 {
+    font-size: 24px;
+}
+.content-wrapper .content {
+    padding: 30px 20px 50px 20px;
+}
+.content-wrapper .content-breadcrumb .breadcrumb {
+    margin-bottom: 0;
+}
 
 @import './views/sections/header/header.scss';
 @import './views/pages/Login/LoginPage.scss';
+@import './views/pages/Users/UsersPage.scss';
 
 

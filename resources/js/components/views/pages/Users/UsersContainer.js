@@ -5,6 +5,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {getUsersTC} from "../../../reducers/user-reduser";
 import Preloader from "../../sections/preloader/preloader";
+import ContentHeader from "../../sections/pagesHeader/ContentHeader";
 
 function UsersContainer(props) {
 
@@ -22,6 +23,11 @@ function UsersContainer(props) {
 
     return (
         <Wrapper>
+
+            <ContentHeader>
+                Users
+            </ContentHeader>
+
             {
                 !props.isFetching
                     ? <Preloader/>
