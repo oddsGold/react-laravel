@@ -28,3 +28,18 @@
         }
     }
 }
+
+.update-form {
+    .floating-label {
+        width: 100%;
+        padding-bottom: 25px;
+        min-height: auto;
+        label {
+            position: inherit;
+            opacity: 1;
+        }
+        input:not(:placeholder-shown) {
+            padding: 0 10px;
+        }
+    }
+}

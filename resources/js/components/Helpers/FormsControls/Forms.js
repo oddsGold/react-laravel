@@ -12,7 +12,7 @@ export function Textarea({input, meta, ...props}) {
     )
 }
 
-export function Input({input, meta, ...props}) {
+export function Input({input, value, meta, ...props}) {
     const hasError = meta.touched && meta.error;
 
     return(
@@ -22,3 +22,4 @@ export function Input({input, meta, ...props}) {
         </>
     )
 }
+

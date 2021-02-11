@@ -1,4 +1,5 @@
 import {getCurrentUserTC} from "./auth-reducer";
+import {menusItem} from "./navbar-reducer";
 
 const INITIALIZED = 'INITIALIZED';
 
@@ -28,13 +29,14 @@ export const initializedSuccess = () => {
 
 export const initializedSuccessApp = () => {
     return (dispatch) => {
-        dispatch(initializedSuccess());
-        dispatch(getCurrentUserTC());
-        // let promise = dispatch(getCurrentUserTC());
-        //
-        // promise.then(() => {
-        //     dispatch(initializedSuccess());
-        // })
+        // dispatch(menusItem());
+        // dispatch(initializedSuccess());
+        // dispatch(getCurrentUserTC());
+        let promise = dispatch(menusItem());
+
+        promise.then(() => {
+            dispatch(initializedSuccess());
+        })
     }
 } //Thunk
 

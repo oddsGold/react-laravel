@@ -59,8 +59,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-//    public static function getUsers($users){
-//        $usersArray = array();
+//    public static function getUser($users){
+//        $userArray = array();
 //        foreach($users as $key => $user){
 //            array_push($usersArray, array(
 //                'id' => $user->id,
@@ -70,7 +70,7 @@ class User extends Authenticatable implements JWTSubject
 //            ));
 //        }
 //
-//        return $usersArray;
+//        return $userArray;
 //
 //    }
 
@@ -81,6 +81,6 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public static function userProfile($id){
-        return User::query()->select('id', 'name', 'email', 'created_at')->where('id',  $id)->get();
+        return User::query()->select('id', 'name', 'email', 'created_at')->where('id',  $id)->first();
     }
 }

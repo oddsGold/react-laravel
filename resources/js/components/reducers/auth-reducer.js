@@ -1,6 +1,7 @@
 import {stopSubmit} from "redux-form";
 import {authApi} from "../api/Api";
 import cookie from 'js-cookie';
+import {menusItem} from "./navbar-reducer";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_NEW_USER = 'SET_NEW_USER';

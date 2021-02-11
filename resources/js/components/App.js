@@ -17,13 +17,13 @@ import UserEditContainer from "./views/pages/Users/UserEditContainer";
 // const UsersContainer = React.lazy(() => import('./components/content/Users/UsersContainer'));
 
 function App(props) {
-    // useEffect(() => {
-    //     props.initializedSuccessApp();
-    // }, [])
+    useEffect(() => {
+        props.initializedSuccessApp();
+    }, [])
 
-    // if(!props.initialized){
-    //     return <Preloader/>
-    // }
+    if(!props.initialized){
+        return <Preloader/>
+    }
 
         return (
         <Router>

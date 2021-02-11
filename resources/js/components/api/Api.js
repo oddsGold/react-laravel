@@ -59,5 +59,15 @@ export const usersApi = {
             .then(response => {
                 return response.data
             })
+    },
+
+    updateUser(updateData) {
+        return instance.patch(`auth/update`, updateData)
+            .then(response => {
+                return response.data
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
     }
 }

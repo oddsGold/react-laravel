@@ -6,9 +6,9 @@ import {menusItem} from "../../../reducers/navbar-reducer";
 
 function SidebarContainer (props) {
 
-    useEffect(() => {
-        props.menusItem()
-    },[])
+    // useEffect(() => {
+    //     props.menusItem()
+    // },[])
 
     return (
         <Sidebar menuItems={props.menuItems} />

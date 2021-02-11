@@ -1,4 +1,6 @@
 import {usersApi} from "../api/Api";
+import {stopSubmit} from "redux-form";
+import {setNewUserAC} from "./auth-reducer";
 
 const GET_USERS = 'GET_USERS';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
@@ -11,7 +13,7 @@ let initialState = {
     totalUsersCount: 0,
     perPage: 0,
     isFetching: false,
-    userProfile: null,
+    userProfile: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -97,10 +99,26 @@ export const getUsersTC = (pageNumber) => {
 
 export const userProfileTC = (id) => {
     return async (dispatch) => {
+        dispatch(setIsFetchingAC(true));
         let data = await usersApi.getUserProfile(id);
-
         dispatch(setUserProfile(data))
+        dispatch(setIsFetchingAC(false));
+
     }
-} //Thunk Creator
+}
+
+export const updateUsersTC = (id, name, email, password) => {
+    return async (dispatch) => {
+        const updateData = {id, name, email, password};
+
+        let data = await usersApi.updateUser(updateData)
+
+        if (!data.errors) {
+            dispatch(userProfileTC(id));
+        }else {
+            dispatch(stopSubmit("update", {_error: data.errors}));
+        }
+    }
+}
 
 export default usersReducer;

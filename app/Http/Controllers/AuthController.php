@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+//use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
@@ -67,6 +69,24 @@ class AuthController extends Controller
     public function me()
     {
         return response()->json(auth()->user());
+    }
+
+    public function update(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users|max:255|unique:users'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()], 403);
+        }
+
+        $input = $request->all();
+        $input['password'] = Hash::make($request['password']);
+
+        auth()->user()->find($input['id'])->update($input);
+        return response('update', Response::HTTP_ACCEPTED);
     }
 
     /**
