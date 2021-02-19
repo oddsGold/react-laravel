@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -76,11 +77,11 @@ class User extends Authenticatable implements JWTSubject
 
     public static function usersToArray(){
 //        $users = self::getUsers(User::query()->orderByDesc('id')->paginate(1));
-        $users = User::query()->orderByDesc('id')->paginate(2);
+        $users = User::query()->orderByDesc('id')->paginate(5);
         return response($users, 200);
     }
 
     public static function userProfile($id){
-        return User::query()->select('id', 'name', 'email', 'created_at')->where('id',  $id)->first();
+        return User::query()->select('id', 'avatar_img', 'name', 'email', 'created_at')->where('id',  $id)->first();
     }
 }

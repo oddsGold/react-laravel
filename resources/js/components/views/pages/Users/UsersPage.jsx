@@ -9,6 +9,7 @@ function UsersPage(props) {
 
             <UsersList
                 usersList={props.usersList}
+                deleteUsersTC={props.deleteUsersTC}
             />
 
             <Pagination

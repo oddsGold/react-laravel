@@ -60,12 +60,14 @@ export const setNewUserAC = (newRegistration) => {
 
 export const getCurrentUserTC = () => {
     return async (dispatch) => {
+
         const token = cookie.get("token");
         let response = await authApi.getUser(token);
 
         if (response.errors) {
             dispatch(stopSubmit("login"));
         }else {
+            dispatch(menusItem());
             dispatch(setUserDataAC(response.data));
         }
     }

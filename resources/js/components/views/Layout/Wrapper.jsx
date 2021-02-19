@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {initializedSuccessApp} from "../../reducers/app-reducer";
 import {withAuthRedirect} from "../../Helpers/Hoc/WithAuthRedirect";
 import ContentHeader from "../sections/pagesHeader/ContentHeader";
+import CollapsedBreadcrumbs from "../sections/breadcrumbs/Breadcrumbs";
 
 function getWindowDimensions() {
     const height = window;
@@ -40,16 +41,6 @@ function Wrapper(props) {
             <SidebarContainer/>
 
             <div className="content-wrapper" style={windowDimensions}>
-
-                <div className="content-breadcrumb">
-                    <ol className="breadcrumb">
-                        <li>
-                            <NavLink to="/">Dashboard</NavLink>
-                        </li>
-                        <li className="active">Contacts</li>
-                        <li className="active">Contacts</li>
-                    </ol>
-                </div> {/*create component*/}
 
                 <div className="content">
                     {props.children}

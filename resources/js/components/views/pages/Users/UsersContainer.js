@@ -3,9 +3,10 @@ import UsersPage from "./UsersPage";
 import Wrapper from "../../Layout/Wrapper";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getUsersTC} from "../../../reducers/user-reduser";
+import {deleteUsersTC, getUsersTC} from "../../../reducers/user-reduser";
 import Preloader from "../../sections/preloader/preloader";
 import ContentHeader from "../../sections/pagesHeader/ContentHeader";
+import CollapsedBreadcrumbs from "../../sections/breadcrumbs/Breadcrumbs";
 
 function UsersContainer(props) {
 
@@ -17,12 +18,17 @@ function UsersContainer(props) {
 
     const handlePageChange = (pageNumber) => {
         setActivePage(pageNumber);
-        props.getUsersTC(pageNumber)
+        props.getUsersTC(pageNumber);
     }
 
+    const BreadcrumbsPath = [
+        "users"
+    ]
 
     return (
         <Wrapper>
+
+            <CollapsedBreadcrumbs pathnames={BreadcrumbsPath} />
 
             <ContentHeader>
                 Users
@@ -39,6 +45,7 @@ function UsersContainer(props) {
                 perPage={props.perPage}
                 handlePageChange={handlePageChange}
                 usersList={props.usersList}
+                deleteUsersTC={props.deleteUsersTC}
             />
         </Wrapper>
     )
@@ -56,6 +63,7 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps,
         {
-            getUsersTC
+            getUsersTC,
+            deleteUsersTC
         })
 )(UsersContainer);

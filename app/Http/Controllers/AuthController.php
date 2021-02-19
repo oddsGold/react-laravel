@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
 
+
 class AuthController extends Controller
 {
     /**
@@ -52,7 +53,7 @@ class AuthController extends Controller
         }
 
 
-        User::create([
+        $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
@@ -83,6 +84,16 @@ class AuthController extends Controller
         }
 
         $input = $request->all();
+
+        if ($request->hasFile('file')){
+            $image = $request->file('file');
+            $name = $image->getClientOriginalExtension();
+            $destinationPath = public_path().'/uploads/';
+            $filename = substr(md5(microtime() . rand(0, 9999)), 0, 32) . '.' . $name;
+            $image->move($destinationPath, $filename);
+
+            $input['avatar_img'] = '/uploads/'.$filename;
+        }
         $input['password'] = Hash::make($request['password']);
 
         auth()->user()->find($input['id'])->update($input);

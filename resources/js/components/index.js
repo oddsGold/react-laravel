@@ -8,6 +8,7 @@ import cookie from "js-cookie";
 import {authApi} from "./api/Api";
 import {setUserDataAC} from "./reducers/auth-reducer";
 import jwt from "jsonwebtoken";
+import {menusItem} from "./reducers/navbar-reducer";
 
 const jwt_secret = "6GbR4fcmz7YRwEwfgugATC16jf1qxhYi4LuuqeWQ7bi7P9fRPycU2PSBug95uKg8";
 let token = cookie.get("token");
@@ -43,6 +44,7 @@ function render() {
 if (token) {
     authApi.getUser(token)
         .then(response => {
+            store.dispatch(menusItem());
             store.dispatch(setUserDataAC(response.data.user));
             render();
         })

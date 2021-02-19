@@ -29,14 +29,13 @@ export const initializedSuccess = () => {
 
 export const initializedSuccessApp = () => {
     return (dispatch) => {
-        // dispatch(menusItem());
-        // dispatch(initializedSuccess());
-        // dispatch(getCurrentUserTC());
-        let promise = dispatch(menusItem());
+        dispatch(initializedSuccess());
 
-        promise.then(() => {
-            dispatch(initializedSuccess());
-        })
+        // let promise = dispatch(menusItem());
+        //
+        // promise.then(() => {
+        //     dispatch(initializedSuccess());
+        // })
     }
 } //Thunk
 

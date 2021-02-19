@@ -7,6 +7,8 @@ const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const SET_USERS_COUNT = 'SET-USERS-COUNT';
 const PER_PAGE = 'PER_PAGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const DELETE_USER = 'DELETE_USER';
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     usersList: [],
@@ -14,6 +16,16 @@ let initialState = {
     perPage: 0,
     isFetching: false,
     userProfile: [],
+}
+
+function editUsersList (state, user) {
+    const newUsersList = state.usersList.slice()
+    newUsersList.splice(newUsersList.indexOf(user), 1);
+
+    return {
+        ...state,
+        usersList: newUsersList
+    }
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -42,6 +54,16 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userProfile: action.profile
+            }
+        case DELETE_USER:
+            return editUsersList(state, action.user)
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                userProfile: {
+                    ...state.userProfile,
+                    photos: action.photos
+                }
             }
         default:
             return {
@@ -85,6 +107,20 @@ export const setUserProfile = (profile) => {
     }
 }
 
+export const deleteUser = (user) => {
+    return {
+        type: DELETE_USER,
+        user: user
+    }
+}
+
+export const savePhotoSuccess = (photos) => {
+    return {
+        type: SAVE_PHOTO_SUCCESS,
+        photos: photos
+    }
+}
+
 export const getUsersTC = (pageNumber) => {
     return async (dispatch) => {
 
@@ -107,9 +143,9 @@ export const userProfileTC = (id) => {
     }
 }
 
-export const updateUsersTC = (id, name, email, password) => {
+export const updateUsersTC = (id, file, name, email, password) => {
     return async (dispatch) => {
-        const updateData = {id, name, email, password};
+        const updateData = {id, file, name, email, password};
 
         let data = await usersApi.updateUser(updateData)
 
@@ -117,6 +153,29 @@ export const updateUsersTC = (id, name, email, password) => {
             dispatch(userProfileTC(id));
         }else {
             dispatch(stopSubmit("update", {_error: data.errors}));
+        }
+    }
+}
+
+export const savePhotoTC = (file) => {
+    return async (dispatch) => {
+
+        let data = await usersApi.saveAvatar(file);
+
+        if (!data.errors) {
+            console.log(data.data);
+            dispatch(savePhotoSuccess(data.data))
+        }
+    }
+}
+
+export const deleteUsersTC = (user) => {
+    return async (dispatch) => {
+
+        let data = await usersApi.deleteUser(user.id)
+
+        if (!data.errors) {
+            dispatch(deleteUser(user));
         }
     }
 }

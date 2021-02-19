@@ -62,7 +62,40 @@ export const usersApi = {
     },
 
     updateUser(updateData) {
-        return instance.patch(`auth/update`, updateData)
+        let formData = new FormData();
+
+        Object.keys(updateData).forEach(function(key) {
+            formData.append(key, updateData[key]);
+        })
+
+        return instance.post(`auth/update`, formData, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => {
+                return response.data
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
+    },
+
+    saveAvatar(file) {
+        let formData = new FormData();
+        formData.append("file", file);
+
+        return instance.post('user/profile/image', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(response => {
+            return response.data
+        })
+    },
+
+    deleteUser(id){
+        return instance.delete(`user/profile/delete/`+id)
             .then(response => {
                 return response.data
             })

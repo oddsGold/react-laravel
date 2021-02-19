@@ -18,4 +18,5 @@ Route::prefix('api')->group(function() {
     Route::get('getMenus', 'App\Http\Controllers\MenusController@index');
     Route::get('getUsers/list', [\App\Http\Controllers\UsersController::class, 'index']);
     Route::get('user/profile/{id}', [\App\Http\Controllers\UsersController::class, 'profile']);
+    Route::delete('user/profile/delete/{id}', [\App\Http\Controllers\UsersController::class, 'destroy']);
 });

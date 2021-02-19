@@ -1,10 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../Helpers/FormsControls/Forms";
+import {FileInput, Input} from "../../../Helpers/FormsControls/Forms";
 import {required} from "../../../Helpers/Validation/validation";
 import {connect} from "react-redux";
-import Preloader from "../../sections/preloader/preloader";
-
 
 function UserEditForm(props) {
 
@@ -19,7 +17,6 @@ function UserEditForm(props) {
                     : ""
                 }
 
-
                 <div className="floating-label form-group">
                     <label htmlFor="name">Name:</label>
                     <Field type="text" placeholder={"Name"} className="form-control" name={"name"} component={Input} validate={[required]}/>
@@ -30,15 +27,20 @@ function UserEditForm(props) {
                            component={Input} validate={[required]}/>
                 </div>
 
-
                 <div className="floating-label form-group">
-                    <label htmlFor="password">Password:</label>
-                    <Field type="password" placeholder={"Password"} className="form-control" name={"password"} component={Input} />
+                    <label htmlFor="password">Conform Your Password:</label>
+                    <Field type="password" placeholder={"Password"} className="form-control" name={"password"} component={Input}/>
                 </div>
-                {/*<div className="floating-label form-group">*/}
-                {/*    <label htmlFor="password_conformation">Conform Your Password:</label>*/}
-                {/*    <Field type="password" placeholder={"Conform Your Password"} className="form-control" name={"password_confirmation"} component={Input} validate={[required]}/>*/}
-                {/*</div>*/}
+
+                <div className="preview-image">
+                    <img src={props.avatar_img ? props.avatar_img : ""} alt=""/>
+                </div>
+
+                <div className="floating-label form-group form-element-upload well">
+                    <label htmlFor="file">Avatar:</label>
+                    <Field name="file" className="form-control-file" component={FileInput} type="file" />
+                </div>
+
                 <div>
                     <button className="btn btn-primary" disabled={invalid|| submitting}>Update</button>
                 </div>
@@ -62,7 +64,8 @@ function mapStateToProps(state) {
 const UserEditReduxForm = connect(mapStateToProps)(reduxForm({
     form: 'update',
     touchOnBlur: false,
-    enableReinitialize: true
+    enableReinitialize: true,
+    multipartForm : true
 })(UserEditForm));
 
 export default UserEditReduxForm;

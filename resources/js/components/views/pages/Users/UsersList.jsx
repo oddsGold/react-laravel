@@ -22,10 +22,13 @@ function UsersList(props) {
                                 <div className="users-list-table-body-row" key={user.id}>
                                     <div className='row'>
                                         <div className="col-md-3">
-                                            <NavLink to={'/admin/users/'+user.id+'/edit'}>{user.name}</NavLink>
+                                            <NavLink to={'/admin/users/edit/'+user.id+''}>{user.name}</NavLink>
                                         </div>
                                         <div className="col-md-6">
                                             <p>{user.email}</p>
+                                        </div>
+                                        <div className="col-md-1">
+                                            <button onClick={()=>props.deleteUsersTC(user)}>Delete</button>
                                         </div>
                                     </div>
                                 </div>

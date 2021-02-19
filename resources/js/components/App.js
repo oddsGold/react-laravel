@@ -31,7 +31,7 @@ function App(props) {
             <GuestRoute path="/admin/register" component={RegisterContainer}/>
             <AuthRoute exact path="/admin" component={Index}/>
             <AuthRoute exact path="/admin/users" component={UsersContainer}/>
-            <AuthRoute path="/admin/users/:userId?/edit" component={UserEditContainer}/>
+            <AuthRoute path="/admin/users/edit/:userId?" component={UserEditContainer}/>
         </Router>
     );
 }

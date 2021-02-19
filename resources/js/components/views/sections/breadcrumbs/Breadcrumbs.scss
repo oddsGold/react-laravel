@@ -1,0 +1,13 @@
+.content-breadcrumb {
+    padding-bottom: 30px;
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        a {
+            color: #3c8dbc;
+        }
+        a:hover {
+            color: #2478b0;
+        }
+    }
+}
