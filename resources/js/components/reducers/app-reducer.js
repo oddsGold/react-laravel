@@ -1,6 +1,3 @@
-import {getCurrentUserTC} from "./auth-reducer";
-import {menusItem} from "./navbar-reducer";
-
 const INITIALIZED = 'INITIALIZED';
 
 

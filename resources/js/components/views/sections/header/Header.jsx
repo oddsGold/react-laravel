@@ -3,6 +3,7 @@ import './header.scss';
 import HeaderNavigation from "./HeaderNavigation";
 import {connect} from "react-redux";
 import {logout} from "../../../reducers/auth-reducer";
+import {NavLink} from "react-router-dom";
 
 
 function Header(props) {
@@ -10,14 +11,14 @@ function Header(props) {
 
     return (
         <header className="main-header">
-            <a href="#" className='logo'>
+            <NavLink to="/admin" className='logo'>
                 <span className='logo-lg'>
                     oddsGold
                 </span>
                 <span className='logo-mini'>
                     Gold
                 </span>
-            </a>
+            </NavLink>
             <HeaderNavigation user={props.user} logout={props.logout} />
         </header>
     );

@@ -47,8 +47,8 @@ export const authApi = {
 }
 
 export const usersApi = {
-    getUsers(pageNumber){
-        return instance.get(`getUsers/list?page=${pageNumber}`)
+    getUsers(pageNumber, pageSize){
+        return instance.get(`getUsers/list?page=${pageNumber}&count=${pageSize}`)
             .then(response => {
                 return response.data
             })
@@ -62,17 +62,7 @@ export const usersApi = {
     },
 
     updateUser(updateData) {
-        let formData = new FormData();
-
-        Object.keys(updateData).forEach(function(key) {
-            formData.append(key, updateData[key]);
-        })
-
-        return instance.post(`auth/update`, formData, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
+        return instance.patch(`auth/update`, updateData)
             .then(response => {
                 return response.data
             })
@@ -81,17 +71,24 @@ export const usersApi = {
             })
     },
 
-    saveAvatar(file) {
+    saveAvatar(updateData) {
         let formData = new FormData();
-        formData.append("file", file);
 
-        return instance.post('user/profile/image', formData, {
+        Object.keys(updateData).forEach(function (key) {
+            formData.append(key, updateData[key]);
+        })
+
+        return instance.post('auth/image/update', formData, {
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }).then(response => {
+        })
+            .then(response => {
             return response.data
         })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
     },
 
     deleteUser(id){
@@ -103,4 +100,22 @@ export const usersApi = {
                 return {errors: response.response.data}
             })
     }
+}
+
+export const newsApi = {
+
+    getNews(pageNumber,pageSize) {
+        return instance.get(`news/?page=${pageNumber}&count=${pageSize}`)
+            .then(response => {
+                return response.data
+            })
+    },
+
+    getCurrentNews(id) {
+        return instance.get(`news/current/`+id)
+            .then(response => {
+                return response.data
+            })
+    }
+
 }

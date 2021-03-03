@@ -31,7 +31,7 @@ export function FileInput({input: {value: omitValue, onChange, onBlur, ...inputP
     return (
         <input
             onChange={adaptFileEventToValue(onChange)}
-            onBlur={adaptFileEventToValue(onBlur)}
+            // onBlur={adaptFileEventToValue(onBlur)}
             type="file"
             {...props.input}
             {...props}

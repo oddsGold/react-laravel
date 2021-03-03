@@ -19,4 +19,6 @@ Route::prefix('api')->group(function() {
     Route::get('getUsers/list', [\App\Http\Controllers\UsersController::class, 'index']);
     Route::get('user/profile/{id}', [\App\Http\Controllers\UsersController::class, 'profile']);
     Route::delete('user/profile/delete/{id}', [\App\Http\Controllers\UsersController::class, 'destroy']);
+    Route::get('news', 'App\Http\Controllers\NewsController@index');
+    Route::get('news/current/{id}', 'App\Http\Controllers\NewsController@show');
 });

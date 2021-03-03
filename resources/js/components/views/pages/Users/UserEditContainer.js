@@ -8,18 +8,28 @@ import UserEditForm from "./UserEditForm";
 import {savePhotoTC, updateUsersTC, userProfileTC} from "../../../reducers/user-reduser";
 import Preloader from "../../sections/preloader/preloader";
 import CollapsedBreadcrumbs from "../../sections/breadcrumbs/Breadcrumbs";
+import UserEditReduxForm from "./UserEditForm";
 
 function UserEditContainer(props) {
 
-    const onSubmit = (formData) => {
-        props.updateUsersTC(formData.id, formData.file, formData.name, formData.email, formData.password);
-        // props.savePhotoTC(formData.file);
+    const [userImage, getUserIcon] = useState(props.avatar_img);
 
+    const onSubmit = (formData) => {
+        props.updateUsersTC(formData.id, formData.name, formData.email, formData.password);
+    }
+
+    const onChange = (formData) => {
+        if(formData.file) {
+            props.savePhotoTC(formData.id, formData.file);
+        }
     }
 
     useEffect(() => {
-        let id = props.match.params.userId;
+        getUserIcon(props.avatar_img);
+    },[props.avatar_img])
 
+    useEffect(() => {
+        let id = props.match.params.userId;
         props.userProfileTC(id);
     }, [props.match.params])
 
@@ -39,9 +49,10 @@ function UserEditContainer(props) {
             {
                 props.isFetching
                     ? <Preloader/>
-                    : <UserEditForm
+                    : <UserEditReduxForm
                         onSubmit={onSubmit}
-                        avatar_img={props.avatar_img}
+                        onChange={onChange}
+                        avatar_img={userImage}
                     />
             }
 

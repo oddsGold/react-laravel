@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 
 function UserEditForm(props) {
 
-    const {error, handleSubmit, invalid, submitting} = props
+    const {error, handleSubmit, invalid, submitting, avatar_img, handleChange} = props
 
     return (
         <div className="update-form">
@@ -33,12 +33,12 @@ function UserEditForm(props) {
                 </div>
 
                 <div className="preview-image">
-                    <img src={props.avatar_img ? props.avatar_img : ""} alt=""/>
+                    <img src={avatar_img ? avatar_img : "/img/avatar/profile-pic-icon.png"} alt=""/>
                 </div>
 
                 <div className="floating-label form-group form-element-upload well">
                     <label htmlFor="file">Avatar:</label>
-                    <Field name="file" className="form-control-file" component={FileInput} type="file" />
+                    <Field name="file" className="form-control-file" component={FileInput} type="file" onChange={handleChange}/>
                 </div>
 
                 <div>

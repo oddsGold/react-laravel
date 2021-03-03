@@ -43,6 +43,8 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:d-m-Y H:i',
+        'updated_at' => 'datetime:d-m-Y H:i'
     ];
 
     public function getJWTIdentifier()
@@ -77,7 +79,7 @@ class User extends Authenticatable implements JWTSubject
 
     public static function usersToArray(){
 //        $users = self::getUsers(User::query()->orderByDesc('id')->paginate(1));
-        $users = User::query()->orderByDesc('id')->paginate(5);
+        $users = User::query()->orderByDesc('id')->paginate(request()->query('count', 5));
         return response($users, 200);
     }
 

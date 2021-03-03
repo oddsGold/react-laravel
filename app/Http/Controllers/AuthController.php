@@ -52,12 +52,13 @@ class AuthController extends Controller
             return response()->json(['errors' => $validator->errors()->all()], 403);
         }
 
-
         $user = User::create([
+            'avatar_img' => '/img/avatar/profile-pic-icon.png',
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
         ]);
+
 
         return $this->login(request());
     }
@@ -76,7 +77,7 @@ class AuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|unique:users|max:255|unique:users'
+            'email' => 'required|unique:users|max:255'
         ]);
 
         if ($validator->fails()) {
@@ -84,20 +85,40 @@ class AuthController extends Controller
         }
 
         $input = $request->all();
-
-        if ($request->hasFile('file')){
-            $image = $request->file('file');
-            $name = $image->getClientOriginalExtension();
-            $destinationPath = public_path().'/uploads/';
-            $filename = substr(md5(microtime() . rand(0, 9999)), 0, 32) . '.' . $name;
-            $image->move($destinationPath, $filename);
-
-            $input['avatar_img'] = '/uploads/'.$filename;
-        }
         $input['password'] = Hash::make($request['password']);
 
         auth()->user()->find($input['id'])->update($input);
         return response('update', Response::HTTP_ACCEPTED);
+    }
+
+    public function updateUserIcon(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()], 403);
+        }
+
+
+        $input = $request->all();
+
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $name = $image->getClientOriginalExtension();
+            $destinationPath = public_path() . '/uploads/';
+            $filename = substr(md5(microtime() . rand(0, 9999)), 0, 32) . '.' . $name;
+            $image->move($destinationPath, $filename);
+
+            $input['avatar_img'] = '/uploads/' . $filename;
+        }
+
+        auth()->user()->find($input['id'])->update($input);
+
+        $icon = User::select('avatar_img')->where('id', $input['id'])-> first();
+
+        return response()->json($icon);
     }
 
     /**

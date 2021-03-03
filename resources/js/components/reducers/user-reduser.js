@@ -16,6 +16,7 @@ let initialState = {
     perPage: 0,
     isFetching: false,
     userProfile: [],
+    avatar_img:""
 }
 
 function editUsersList (state, user) {
@@ -26,6 +27,16 @@ function editUsersList (state, user) {
         ...state,
         usersList: newUsersList
     }
+}
+
+function objToString (obj) {
+    let str = '';
+    for (let p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str += obj[p];
+        }
+    }
+    return str;
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -43,7 +54,7 @@ const usersReducer = (state = initialState, action) => {
         case PER_PAGE:
             return {
                 ...state,
-                perPage: action.perPage
+                perPage: Number(action.perPage)
             }
         case TOGGLE_IS_FETCHING:
             return {
@@ -62,7 +73,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 userProfile: {
                     ...state.userProfile,
-                    photos: action.photos
+                    avatar_img: objToString(action.photos)
                 }
             }
         default:
@@ -121,10 +132,10 @@ export const savePhotoSuccess = (photos) => {
     }
 }
 
-export const getUsersTC = (pageNumber) => {
+export const getUsersTC = (pageNumber, pageSize) => {
     return async (dispatch) => {
 
-        let data = await usersApi.getUsers(pageNumber);
+        let data = await usersApi.getUsers(pageNumber, pageSize);
 
         dispatch(setIsFetchingAC(true));
         dispatch(getUsersAC(data.data));
@@ -143,9 +154,9 @@ export const userProfileTC = (id) => {
     }
 }
 
-export const updateUsersTC = (id, file, name, email, password) => {
+export const updateUsersTC = (id, name, email, password) => {
     return async (dispatch) => {
-        const updateData = {id, file, name, email, password};
+        const updateData = {id, name, email, password};
 
         let data = await usersApi.updateUser(updateData)
 
@@ -157,14 +168,17 @@ export const updateUsersTC = (id, file, name, email, password) => {
     }
 }
 
-export const savePhotoTC = (file) => {
+export const savePhotoTC = (id, file) => {
     return async (dispatch) => {
+        const updateData = {id, file};
 
-        let data = await usersApi.saveAvatar(file);
+        let data = await usersApi.saveAvatar(updateData);
+
 
         if (!data.errors) {
-            console.log(data.data);
-            dispatch(savePhotoSuccess(data.data))
+            dispatch(savePhotoSuccess(data))
+        }else {
+            dispatch(stopSubmit("update", {_error: data.errors}));
         }
     }
 }
@@ -176,6 +190,8 @@ export const deleteUsersTC = (user) => {
 
         if (!data.errors) {
             dispatch(deleteUser(user));
+        }else {
+            dispatch(stopSubmit("update", {_error: data.errors}));
         }
     }
 }

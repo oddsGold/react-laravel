@@ -1,28 +1,29 @@
 import React, {useEffect, useState} from "react";
-import UsersPage from "./UsersPage";
 import Wrapper from "../../Layout/Wrapper";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {deleteUsersTC, getUsersTC} from "../../../reducers/user-reduser";
 import Preloader from "../../sections/preloader/preloader";
 import ContentHeader from "../../sections/pagesHeader/ContentHeader";
 import CollapsedBreadcrumbs from "../../sections/breadcrumbs/Breadcrumbs";
+import NewsPage from "./NewsPage";
+import {getNewsTC} from "../../../reducers/news-reducer";
+import "./News.scss"
 
-function UsersContainer(props) {
+function NewsContainer(props) {
     const [activePage, setActivePage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
     useEffect(() => {
-        props.getUsersTC(activePage, pageSize);
+        props.getNewsTC(activePage, pageSize);
     }, [])
 
     const handlePageChange = (pageNumber) => {
         setActivePage(pageNumber);
-        props.getUsersTC(pageNumber, pageSize);
+        props.getNewsTC(pageNumber, pageSize);
     }
 
     const BreadcrumbsPath = [
-        "users"
+        "news"
     ]
 
     return (
@@ -31,7 +32,7 @@ function UsersContainer(props) {
             <CollapsedBreadcrumbs pathnames={BreadcrumbsPath} />
 
             <ContentHeader>
-                Users
+                News
             </ContentHeader>
 
             {
@@ -39,31 +40,31 @@ function UsersContainer(props) {
                     ? <Preloader/>
                     : null
             }
-            <UsersPage
+
+            <NewsPage
                 activePage={activePage}
-                totalItemsCount={props.totalUsersCount}
+                totalItemsCount={props.totalNewsCount}
                 perPage={props.perPage}
                 handlePageChange={handlePageChange}
-                usersList={props.usersList}
-                deleteUsersTC={props.deleteUsersTC}
+                news={props.news}
             />
+
         </Wrapper>
     )
 }
 
 let mapStateToProps = (state) => {
     return {
-        usersList: state.users.usersList,
+        news: state.news.news,
         isFetching: state.users.isFetching,
-        totalUsersCount: state.users.totalUsersCount,
-        perPage: state.users.perPage
+        totalNewsCount: state.news.totalNewsCount,
+        perPage: state.news.perPage
     }
 }
 
 export default compose(
     connect(mapStateToProps,
         {
-            getUsersTC,
-            deleteUsersTC
+            getNewsTC
         })
-)(UsersContainer);
+)(NewsContainer);

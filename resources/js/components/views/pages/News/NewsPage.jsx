@@ -1,15 +1,15 @@
 import React from "react";
 import Pagination from "react-js-pagination";
-import UsersList from "./UsersList";
+import {NavLink} from "react-router-dom";
+import NewsList from "./NewsList";
 
-function UsersPage(props) {
+function NewsPage(props) {
 
     return (
-        <div className="users-page">
+        <div className="news-page">
 
-            <UsersList
-                usersList={props.usersList}
-                deleteUsersTC={props.deleteUsersTC}
+            <NewsList
+                news={props.news}
             />
 
             {props.totalItemsCount
@@ -23,8 +23,9 @@ function UsersPage(props) {
                 />
                 : ""
             }
+
         </div>
     )
 }
 
-export default UsersPage;
+export default NewsPage;

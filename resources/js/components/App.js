@@ -12,6 +12,8 @@ import {connect} from "react-redux";
 import {initializedSuccessApp} from "./reducers/app-reducer";
 import UsersContainer from "./views/pages/Users/UsersContainer";
 import UserEditContainer from "./views/pages/Users/UserEditContainer";
+import NewsContainer from "./views/pages/News/NewsContainer";
+import NewsEditContainer from "./views/pages/News/NewsEditContainer";
 
 
 // const UsersContainer = React.lazy(() => import('./components/content/Users/UsersContainer'));
@@ -32,6 +34,8 @@ function App(props) {
             <AuthRoute exact path="/admin" component={Index}/>
             <AuthRoute exact path="/admin/users" component={UsersContainer}/>
             <AuthRoute path="/admin/users/edit/:userId?" component={UserEditContainer}/>
+            <AuthRoute exact path="/admin/news" component={NewsContainer}/>
+            <AuthRoute path="/admin/news/edit/:newsId?" component={NewsEditContainer}/>
         </Router>
     );
 }

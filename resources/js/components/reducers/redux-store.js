@@ -5,13 +5,15 @@ import appReducer from "./app-reducer";
 import navbarReducer from "./navbar-reducer";
 import authReducer from "./auth-reducer";
 import usersReducer from "./user-reduser";
+import newsReducer from "./news-reducer";
 
 let reducers = combineReducers({
     navbar: navbarReducer,
     app: appReducer,
     form: formReducer,
     auth: authReducer,
-    users: usersReducer
+    users: usersReducer,
+    news: newsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
