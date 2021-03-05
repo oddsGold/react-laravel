@@ -21,7 +21,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'me']]);
     }
 
     /**
@@ -85,7 +85,10 @@ class AuthController extends Controller
         }
 
         $input = $request->all();
-        $input['password'] = Hash::make($request['password']);
+
+        if($request['password']) {
+            $input['password'] = Hash::make($request['password']);
+        }
 
         auth()->user()->find($input['id'])->update($input);
         return response('update', Response::HTTP_ACCEPTED);

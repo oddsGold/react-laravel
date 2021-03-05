@@ -4,7 +4,6 @@ import ContentHeader from "../../sections/pagesHeader/ContentHeader";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import UserEditForm from "./UserEditForm";
 import {savePhotoTC, updateUsersTC, userProfileTC} from "../../../reducers/user-reduser";
 import Preloader from "../../sections/preloader/preloader";
 import CollapsedBreadcrumbs from "../../sections/breadcrumbs/Breadcrumbs";

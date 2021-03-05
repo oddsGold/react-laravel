@@ -1,7 +1,11 @@
 import axios from "axios";
+import cookie from "js-cookie";
 
 const instance = axios.create({
-    baseURL: 'http://react.local/api/'
+    baseURL: 'http://react.local/api/',
+    headers: {
+        Authorization: `Bearer ${cookie.get("token")}`
+    }
 });
 
 export const menusApi = {
@@ -33,16 +37,20 @@ export const authApi = {
                 return {errors: response.response.data}
             })
     },
-    getUser(token) {
-        return instance.post('auth/me', null, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
+    getUser() {
+        return instance.post('auth/me')
             .then(response => {
                 return response
             })
             .catch(response => {
-                return {errors: response.response.data}
+                return response;
             })
+    },
+    logout(){
+        return instance.post(`/logout`)
+    },
+    setToken(token){
+        instance.defaults.headers.Authorization = `Bearer ${token}`;
     }
 }
 
@@ -105,7 +113,7 @@ export const usersApi = {
 export const newsApi = {
 
     getNews(pageNumber,pageSize) {
-        return instance.get(`news/?page=${pageNumber}&count=${pageSize}`)
+        return instance.get(`news?page=${pageNumber}&count=${pageSize}`)
             .then(response => {
                 return response.data
             })

@@ -14,16 +14,22 @@ import UsersContainer from "./views/pages/Users/UsersContainer";
 import UserEditContainer from "./views/pages/Users/UserEditContainer";
 import NewsContainer from "./views/pages/News/NewsContainer";
 import NewsEditContainer from "./views/pages/News/NewsEditContainer";
+import cookie from "js-cookie";
 
 
 // const UsersContainer = React.lazy(() => import('./components/content/Users/UsersContainer'));
 
 function App(props) {
+
+    let token = cookie.get("token");
+
     useEffect(() => {
-        props.initializedSuccessApp();
+        if(token) {
+            props.initializedSuccessApp();
+        }
     }, [])
 
-    if(!props.initialized){
+    if(!props.initialized && token){
         return <Preloader/>
     }
 

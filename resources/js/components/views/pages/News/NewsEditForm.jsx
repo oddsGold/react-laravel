@@ -1,11 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../Helpers/FormsControls/Forms";
+import {Input, renderMultiselect, renderDateTimePicker} from "../../../Helpers/FormsControls/Forms";
 
 function NewsEditForm(props) {
-
-
 
     const {error, handleSubmit} = props
 
@@ -32,6 +30,20 @@ function NewsEditForm(props) {
                 <div className="floating-label form-group">
                     <label htmlFor="description">Description:</label>
                     <Field type="text" placeholder={"Description"} className="form-control" name={"description"} component={Input}/>
+                </div>
+
+                <div className="floating-label form-group">
+                    <label htmlFor="description">Category:</label>
+                    <Field name="category" component={renderMultiselect} data={[ 'Guitar', 'Cycling', 'Hiking' ]}/>
+                </div>
+
+                <div className="floating-label form-group">
+                    <label htmlFor="description">Date Piker:</label>
+                    <Field name="date" showTime={false} component={renderDateTimePicker} />
+                </div>
+
+                <div>
+                    <button className="btn btn-primary">Update</button>
                 </div>
 
                 {/*<CKEditor*/}
@@ -64,7 +76,8 @@ function mapStateToProps(state) {
         initialValues: {
             title: state.news.currentNews.title,
             keywords: state.news.currentNews.keywords,
-            description: state.news.currentNews.description
+            description: state.news.currentNews.description,
+            published: state.news.currentNews.published
         }
     };
 }

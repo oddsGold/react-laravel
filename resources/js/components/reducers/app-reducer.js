@@ -1,3 +1,5 @@
+import {getCurrentUserTC} from "./auth-reducer";
+
 const INITIALIZED = 'INITIALIZED';
 
 
@@ -26,13 +28,13 @@ export const initializedSuccess = () => {
 
 export const initializedSuccessApp = () => {
     return (dispatch) => {
-        dispatch(initializedSuccess());
+        // dispatch(initializedSuccess());
 
-        // let promise = dispatch(menusItem());
-        //
-        // promise.then(() => {
-        //     dispatch(initializedSuccess());
-        // })
+        let promise = dispatch(getCurrentUserTC());
+
+        promise.then(() => {
+            dispatch(initializedSuccess());
+        })
     }
 } //Thunk
 

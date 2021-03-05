@@ -2,6 +2,7 @@ import {stopSubmit} from "redux-form";
 import {authApi} from "../api/Api";
 import cookie from 'js-cookie';
 import {menusItem} from "./navbar-reducer";
+import {setIsFetchingAC} from "./user-reduser";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_NEW_USER = 'SET_NEW_USER';
@@ -61,11 +62,12 @@ export const setNewUserAC = (newRegistration) => {
 export const getCurrentUserTC = () => {
     return async (dispatch) => {
 
-        const token = cookie.get("token");
-        let response = await authApi.getUser(token);
 
-        if (response.errors) {
+        let response = await authApi.getUser();
+
+        if (!response.data) {
             dispatch(stopSubmit("login"));
+            cookie.remove('token');
         }else {
             dispatch(menusItem());
             dispatch(setUserDataAC(response.data));
@@ -76,6 +78,7 @@ export const getCurrentUserTC = () => {
 
 export const login = (email, password) => {
     return async (dispatch) => {
+
         let data = await authApi.authLogin(email, password);
 
         if (data.errors) {
@@ -84,8 +87,8 @@ export const login = (email, password) => {
             let date = new Date();
             date.setTime(date.getTime() + (180 * 60 * 1000)); //минуты - секунды - милисекунды
             cookie.set("token", data.access_token, {expires: date});
-
-            dispatch(getCurrentUserTC())
+            authApi.setToken((data.access_token).replace(/[а-яА-ЯЁё]/gi," "));
+            dispatch(getCurrentUserTC());
         }
     }
 } //login user

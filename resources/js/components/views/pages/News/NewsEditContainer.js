@@ -12,6 +12,10 @@ import {getCurrentNewsTC} from "../../../reducers/news-reducer";
 
 function NewsEditContainer(props) {
 
+    const onSubmit = (formData) => {
+        console.log(formData);
+    }
+
     const BreadcrumbsPath = [
         "news", "Update news"
     ]
@@ -35,6 +39,7 @@ function NewsEditContainer(props) {
                 props.isFetching
                     ? <Preloader/>
                     : <NewsEditReduxForm
+                        onSubmit={onSubmit}
                         text={props.text}
                     />
             }

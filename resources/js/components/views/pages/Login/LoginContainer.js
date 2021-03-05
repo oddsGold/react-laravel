@@ -3,6 +3,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import LoginPage from "./LoginPage";
 import {login} from "../../../reducers/auth-reducer";
+import {initializedSuccessApp} from "../../../reducers/app-reducer";
 
 function LoginContainer(props) {
     const onSubmit = (formData) => {
@@ -24,5 +25,6 @@ export default compose(
     connect(mapStateToProps,
         {
             login,
+            initializedSuccessApp
         })
 )(LoginContainer);
