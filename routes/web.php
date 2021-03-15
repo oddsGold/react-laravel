@@ -27,5 +27,6 @@ Route::group([
     Route::delete('user/profile/delete/{id}', [\App\Http\Controllers\UsersController::class, 'destroy']);
     Route::get('news', 'App\Http\Controllers\NewsController@index');
     Route::get('news/current/{id}', 'App\Http\Controllers\NewsController@show');
+    Route::patch('update', 'App\Http\Controllers\NewsController@update');
 
 });

@@ -8,6 +8,7 @@ import CollapsedBreadcrumbs from "../../sections/breadcrumbs/Breadcrumbs";
 import NewsPage from "./NewsPage";
 import {getNewsTC} from "../../../reducers/news-reducer";
 import "./News.scss"
+import UserEditReduxForm from "../Users/UserEditForm";
 
 function NewsContainer(props) {
     const [activePage, setActivePage] = useState(1);

@@ -21,8 +21,8 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'image_id',
         'password',
-        'avatar_img',
         'created_at'
     ];
 
@@ -62,28 +62,19 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-//    public static function getUser($users){
-//        $userArray = array();
-//        foreach($users as $key => $user){
-//            array_push($usersArray, array(
-//                'id' => $user->id,
-//                'email'  => $user->email,
-//                'avatar_img'  => $user->avatar_img,
-//                'created_at'  => $user->created_at,
-//            ));
-//        }
-//
-//        return $userArray;
-//
-//    }
-
     public static function usersToArray(){
-//        $users = self::getUsers(User::query()->orderByDesc('id')->paginate(1));
         $users = User::query()->orderByDesc('id')->paginate(request()->query('count', 5));
         return response($users, 200);
     }
 
-    public static function userProfile($id){
-        return User::query()->select('id', 'avatar_img', 'name', 'email', 'created_at')->where('id',  $id)->first();
+    public function image(){
+        return $this->morphOne('App\Models\Image', 'imageable');
     }
+
+    public function userImage()
+    {
+        return $this->hasOne(Image::class, 'id', 'image_id');
+    }
+
+
 }

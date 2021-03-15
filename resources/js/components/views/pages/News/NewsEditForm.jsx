@@ -1,11 +1,17 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Field, reduxForm} from "redux-form";
-import {Input, renderMultiselect, renderDateTimePicker} from "../../../Helpers/FormsControls/Forms";
+import {Input, renderMultiselect, renderDateTimePicker, FileInput} from "../../../Helpers/FormsControls/Forms";
 
 function NewsEditForm(props) {
 
     const {error, handleSubmit} = props
+
+    const onChange = (formData) => {
+        if(formData) {
+            props.saveImageTC(props.id, formData);
+        }
+    }
 
     return(
         <div className="update-form">
@@ -16,7 +22,7 @@ function NewsEditForm(props) {
                 }
 
                 <div className="floating-label form-group">
-                    <label htmlFor="name">Title:</label>
+                    <label htmlFor="title">Title:</label>
                     <Field type="text" placeholder={"Title"} className="form-control" name={"title"} component={Input}/>
                 </div>
                 <div className="floating-label form-group input-checkbox">
@@ -34,12 +40,27 @@ function NewsEditForm(props) {
 
                 <div className="floating-label form-group">
                     <label htmlFor="description">Category:</label>
-                    <Field name="category" component={renderMultiselect} data={[ 'Guitar', 'Cycling', 'Hiking' ]}/>
+                    <Field name="category" component={renderMultiselect} selectCategory={props.categories} data={props.categories}/>
                 </div>
 
                 <div className="floating-label form-group">
                     <label htmlFor="description">Date Piker:</label>
                     <Field name="date" showTime={false} component={renderDateTimePicker} />
+                </div>
+
+                {props.newsImage
+                    ? <div className="preview-image">
+                        <img src={props.newsImage.path+props.newsImage.image_name} alt=""/>
+                    </div>
+                    : <div className="preview-image">
+                        <img src="/img/avatar/profile-pic-icon.png" alt=""/>
+                    </div>
+                }
+
+                <div className="floating-label form-group form-element-upload well">
+                    <label htmlFor="file">Image:</label>
+                    <Field name="file" className="form-control-file" component={FileInput} type="file"
+                           onChange={onChange}/>
                 </div>
 
                 <div>
@@ -77,7 +98,8 @@ function mapStateToProps(state) {
             title: state.news.currentNews.title,
             keywords: state.news.currentNews.keywords,
             description: state.news.currentNews.description,
-            published: state.news.currentNews.published
+            published: state.news.currentNews.published,
+            id: state.news.currentNews.id
         }
     };
 }

@@ -6,6 +6,7 @@ import navbarReducer from "./navbar-reducer";
 import authReducer from "./auth-reducer";
 import usersReducer from "./user-reduser";
 import newsReducer from "./news-reducer";
+import categoryReducer from "./category-reducer";
 
 let reducers = combineReducers({
     navbar: navbarReducer,
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     form: formReducer,
     auth: authReducer,
     users: usersReducer,
-    news: newsReducer
+    news: newsReducer,
+    category: categoryReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,4 +1,4 @@
-import {newsApi} from "../api/Api";
+import {newsApi, usersApi} from "../api/Api";
 import {stopSubmit} from "redux-form";
 import {setIsFetchingAC} from "./user-reduser";
 
@@ -6,12 +6,14 @@ const GET_NEWS = 'GET_NEWS';
 const SET_NEWS_COUNT = 'SET-USERS-COUNT';
 const PER_PAGE = 'PER_PAGE';
 const SET_CURRENT_NEWS = 'SET_CURRENT_NEWS';
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     totalNewsCount: 0,
     perPage: 0,
     news: [],
-    currentNews: []
+    currentNews: [],
+    tempNewsImage:[]
 }
 
 
@@ -36,6 +38,14 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 perPage: Number(action.perPage)
+            }
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                currentNews: {
+                    ...state.currentNews
+                },
+                tempNewsImage: action.photos
             }
         default:
             return state;
@@ -66,6 +76,12 @@ export const setCurrentNews = (currentNews) => {
         currentNews: currentNews
     }
 }
+export const saveImageSuccess = (photos) => {
+    return {
+        type: SAVE_PHOTO_SUCCESS,
+        photos: photos
+    }
+}
 
 
 
@@ -85,10 +101,39 @@ export const getCurrentNewsTC = (id) => {
         dispatch(setIsFetchingAC(true));
 
         let data = await newsApi.getCurrentNews(id);
+        console.log(data.news);
 
         dispatch(setCurrentNews(data))
         dispatch(setIsFetchingAC(false));
 
+    }
+}
+
+export const saveImageTC = (id, file) => {
+    return async (dispatch) => {
+        const updateData = {id, file};
+
+        let data = await usersApi.uploadImage(updateData);
+
+        if (!data.errors) {
+            dispatch(saveImageSuccess(data))
+        }else {
+            dispatch(stopSubmit("news-update", {_error: data.errors}));
+        }
+    }
+}
+
+export const updateNewsTC = (id, title, published, keywords,description, image_id) => {
+    return async (dispatch) => {
+        const updateData = {id, title, published, keywords,description, image_id};
+
+        let data = await newsApi.updateNews(updateData)
+
+        if (!data.errors) {
+            dispatch(getCurrentNewsTC(id));
+        }else {
+            dispatch(stopSubmit("update", {_error: data.errors}));
+        }
     }
 }
 

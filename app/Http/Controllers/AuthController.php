@@ -94,35 +94,6 @@ class AuthController extends Controller
         return response('update', Response::HTTP_ACCEPTED);
     }
 
-    public function updateUserIcon(Request $request) {
-
-        $validator = Validator::make($request->all(), [
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all()], 403);
-        }
-
-
-        $input = $request->all();
-
-        if ($request->hasFile('file')) {
-            $image = $request->file('file');
-            $name = $image->getClientOriginalExtension();
-            $destinationPath = public_path() . '/uploads/';
-            $filename = substr(md5(microtime() . rand(0, 9999)), 0, 32) . '.' . $name;
-            $image->move($destinationPath, $filename);
-
-            $input['avatar_img'] = '/uploads/' . $filename;
-        }
-
-        auth()->user()->find($input['id'])->update($input);
-
-        $icon = User::select('avatar_img')->where('id', $input['id'])-> first();
-
-        return response()->json($icon);
-    }
 
     /**
      * Log the user out (Invalidate the token).

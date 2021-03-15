@@ -79,14 +79,14 @@ export const usersApi = {
             })
     },
 
-    saveAvatar(updateData) {
+    uploadImage(updateData) {
         let formData = new FormData();
 
         Object.keys(updateData).forEach(function (key) {
             formData.append(key, updateData[key]);
         })
 
-        return instance.post('auth/image/update', formData, {
+        return instance.post('auth/image/upload', formData, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -124,6 +124,16 @@ export const newsApi = {
             .then(response => {
                 return response.data
             })
-    }
+    },
+
+    updateNews(updateData) {
+        return instance.patch(`update`, updateData)
+            .then(response => {
+                return response.data
+            })
+            .catch(response => {
+                return {errors: response.response.data}
+            })
+    },
 
 }

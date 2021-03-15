@@ -11,21 +11,24 @@ import UserEditReduxForm from "./UserEditForm";
 
 function UserEditContainer(props) {
 
-    const [userImage, getUserIcon] = useState(props.avatar_img);
+    const [userImage, getUserIcon] = useState();
 
     const onSubmit = (formData) => {
-        props.updateUsersTC(formData.id, formData.name, formData.email, formData.password);
-    }
-
-    const onChange = (formData) => {
-        if(formData.file) {
-            props.savePhotoTC(formData.id, formData.file);
+        if(userImage){
+            props.updateUsersTC(formData.id, formData.name, formData.email, formData.password, userImage.id);
+        }else {
+            props.updateUsersTC(formData.id, formData.name, formData.email, formData.password);
         }
     }
 
     useEffect(() => {
-        getUserIcon(props.avatar_img);
-    },[props.avatar_img])
+        getUserIcon(props.tempUserImage);
+    },[props.tempUserImage])
+
+    useEffect(() => {
+        getUserIcon(props.profileUserImage);
+    },[props.profileUserImage])
+
 
     useEffect(() => {
         let id = props.match.params.userId;
@@ -50,8 +53,9 @@ function UserEditContainer(props) {
                     ? <Preloader/>
                     : <UserEditReduxForm
                         onSubmit={onSubmit}
-                        onChange={onChange}
-                        avatar_img={userImage}
+                        userImage={userImage}
+                        savePhotoTC={props.savePhotoTC}
+                        id={props.id}
                     />
             }
 
@@ -62,7 +66,9 @@ function UserEditContainer(props) {
 let mapStateToProps = (state) => {
     return {
         isFetching: state.users.isFetching,
-        avatar_img: state.users.userProfile.avatar_img
+        profileUserImage: state.users.userProfile.user_image,
+        tempUserImage: state.users.tempUserImage,
+        id: state.users.userProfile.id
     }
 }
 

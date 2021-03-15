@@ -6,7 +6,13 @@ import {connect} from "react-redux";
 
 function UserEditForm(props) {
 
-    const {error, handleSubmit, invalid, submitting, avatar_img, handleChange} = props
+    const {error, handleSubmit, invalid, submitting, handleChange} = props
+
+    const onChange = (formData) => {
+        if(formData) {
+            props.savePhotoTC(props.id, formData);
+        }
+    }
 
     return (
         <div className="update-form">
@@ -19,7 +25,8 @@ function UserEditForm(props) {
 
                 <div className="floating-label form-group">
                     <label htmlFor="name">Name:</label>
-                    <Field type="text" placeholder={"Name"} className="form-control" name={"name"} component={Input} validate={[required]}/>
+                    <Field type="text" placeholder={"Name"} className="form-control" name={"name"} component={Input}
+                           validate={[required]}/>
                 </div>
                 <div className="floating-label form-group">
                     <label htmlFor="email">Email:</label>
@@ -29,20 +36,27 @@ function UserEditForm(props) {
 
                 <div className="floating-label form-group">
                     <label htmlFor="password">Conform Your Password:</label>
-                    <Field type="password" placeholder={"Password"} className="form-control" name={"password"} component={Input}/>
+                    <Field type="password" placeholder={"Password"} className="form-control" name={"password"}
+                           component={Input}/>
                 </div>
 
-                <div className="preview-image">
-                    <img src={avatar_img ? avatar_img : "/img/avatar/profile-pic-icon.png"} alt=""/>
-                </div>
+                {props.userImage
+                    ? <div className="preview-image">
+                        <img src={props.userImage.path+props.userImage.image_name} alt=""/>
+                    </div>
+                    : <div className="preview-image">
+                        <img src="/img/avatar/profile-pic-icon.png" alt=""/>
+                    </div>
+                }
 
                 <div className="floating-label form-group form-element-upload well">
                     <label htmlFor="file">Avatar:</label>
-                    <Field name="file" className="form-control-file" component={FileInput} type="file" onChange={handleChange}/>
+                    <Field name="file" className="form-control-file" component={FileInput} type="file"
+                           onChange={onChange}/>
                 </div>
 
                 <div>
-                    <button className="btn btn-primary" disabled={invalid|| submitting}>Update</button>
+                    <button className="btn btn-primary" disabled={invalid || submitting}>Update</button>
                 </div>
             </form>
         </div>
@@ -65,7 +79,7 @@ const UserEditReduxForm = connect(mapStateToProps)(reduxForm({
     form: 'update',
     touchOnBlur: false,
     enableReinitialize: true,
-    multipartForm : true
+    multipartForm: true
 })(UserEditForm));
 
 export default UserEditReduxForm;

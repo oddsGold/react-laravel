@@ -38,7 +38,7 @@ Route::group([
         Route::post('logout', 'App\Http\Controllers\AuthController@logout');
         Route::post('me', 'App\Http\Controllers\AuthController@me');
         Route::patch('update', 'App\Http\Controllers\AuthController@update');
-        Route::post('image/update', 'App\Http\Controllers\AuthController@updateUserIcon');
+        Route::post('image/upload', 'App\Http\Controllers\ImagesController@uploadImage');
     });
 
 });

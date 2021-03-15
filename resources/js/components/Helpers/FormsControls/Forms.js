@@ -47,11 +47,11 @@ export function FileInput({input: {value: omitValue, onChange, onBlur, ...inputP
     );
 };
 
-export function renderMultiselect({input, data, valueField, textField}) {
+export function renderMultiselect({input, data, selectCategory, valueField, textField}) {
     return (
         <Multiselect {...input}
                      onBlur={() => input.onBlur()}
-                     value={input.value || []} // requires value to be an array
+                     value={input.value || selectCategory} // requires value to be an array
                      data={data}
                      valueField={valueField}
                      textField={textField}

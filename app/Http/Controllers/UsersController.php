@@ -14,7 +14,8 @@ class UsersController extends Controller
     }
 
     public function profile($id){
-        return User::userProfile($id);
+        $user = User::with('userImage')->findOrFail($id);
+        return $user;
     }
 
     public function destroy($id)

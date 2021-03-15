@@ -16,7 +16,7 @@ let initialState = {
     perPage: 0,
     isFetching: false,
     userProfile: [],
-    avatar_img:""
+    tempUserImage:[]
 }
 
 function editUsersList (state, user) {
@@ -72,9 +72,9 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userProfile: {
-                    ...state.userProfile,
-                    avatar_img: objToString(action.photos)
-                }
+                    ...state.userProfile
+                },
+                tempUserImage: action.photos
             }
         default:
             return {
@@ -154,9 +154,9 @@ export const userProfileTC = (id) => {
     }
 }
 
-export const updateUsersTC = (id, name, email, password) => {
+export const updateUsersTC = (id, name, email, password, image_id) => {
     return async (dispatch) => {
-        const updateData = {id, name, email, password};
+        const updateData = {id, name, email, password, image_id};
 
         let data = await usersApi.updateUser(updateData)
 
@@ -172,7 +172,7 @@ export const savePhotoTC = (id, file) => {
     return async (dispatch) => {
         const updateData = {id, file};
 
-        let data = await usersApi.saveAvatar(updateData);
+        let data = await usersApi.uploadImage(updateData);
 
 
         if (!data.errors) {
